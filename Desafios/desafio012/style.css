@@ -1,0 +1,47 @@
+@charset "UTF-8";
+
+*{
+    margin: 1px;
+    padding: 0px;
+}
+
+header, footer{
+    background-color:black ;
+}
+
+header{
+    border-radius: 10px 10px 0px 0px;
+}
+
+header, footer > p{
+    color: white;
+    text-align: center;
+}
+
+h1{
+    padding: 30px 0px 10px 0px;
+    font-family:Verdana, Geneva, Tahoma, sans-serif ;
+    font-size: 10vw;
+    font-weight: bolder;
+    color: white;
+}
+
+header > p{
+    padding-bottom: 20px;
+}
+
+a{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+}
+
+footer{
+    border-radius: 0px 0px 10px 10px;
+    height: 30px;
+}
+
+footer > p{
+    padding: 5px 0px;
+}
