@@ -16,8 +16,10 @@
 }
 
 main{
+    background-image: linear-gradient(rgba(205, 203, 203, 0.199), rgba(181, 180, 180, 0.199));
     max-width: 80vw;
     margin: auto;
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.208);
 }
 
 header, footer{
