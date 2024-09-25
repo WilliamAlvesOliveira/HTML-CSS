@@ -25,12 +25,25 @@
             height: 1000px;
         }
 
-       div{
+       picture{
         background-color: black;
         margin: 2px;
         display: inline-block;
-        width: 49.4%;
-        height: 50%;
+       }
+
+       img{
+        max-width: 30vw;
+       }
+
+       aside{
+        display: inline-block;
+        margin: 2px;
+        max-width: 500px;
+       }
+
+       aside > p{
+        text-align: justify;
+        top: 40px;
        }
     </style>
 </head>
@@ -40,8 +53,12 @@
     </header>
 
     <main>
-         <div></div>
-         <div></div>
+        <picture>
+            <img src="imagens/joca.jpg" alt="J">
+        </picture>
+        <aside>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius officia minus tempore! Molestiae similique quibusdam molestias eos temporibus nemo explicabo qui. Nam sed sunt cum. Nemo quaerat numquam reprehenderit quidem.</p>
+        </aside>
     </main>
     
 </body>
