@@ -5,46 +5,64 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Joaquim</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
         *{
             margin:0px;
             padding: 0px;
         }
+
         body{
-            background-image: linear-gradient(to bottom,rgb(139, 139, 243),blue);
+            background-image: linear-gradient(to bottom,rgba(139, 139, 243, 0.8),rgba(0, 0, 255, 0.8));
         }
 
         header h1{
             text-align:center;
+            font-family: "Press Start 2P", system-ui;
+            font-size: 2em;;
+            padding: 30px;
         }
 
         main{
+            display: flex;
+            flex-direction: row;
+            gap: 20px;
             margin: auto;
             max-width: 1000px;
             min-width: 300px;
-            background-color: white;
-            height: 1000px;
+            align-items: center;
         }
 
-       picture{
-        background-color: black;
-        margin: 2px;
-        display: inline-block;
-       }
+        main  p{
+            background-color: rgba(121, 177, 222, 0.095);
+            padding: 5px;
+            border-radius: 10px;
+            text-indent: 20px;
+            text-align: justify;
+            box-shadow: 1px 1px rgba(255, 255, 255, 0.118);
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 18px;
+            margin: 20px 3px;
+        }
 
-       img{
-        max-width: 30vw;
-       }
+        img{
+            border-radius:12px;
+            height: 590px;
+            box-shadow:1px 1px 3px rgba(0, 0, 0, 0.319);
+        }
 
-       aside{
-        display: inline-block;
-        margin: 2px;
-        max-width: 500px;
-       }
+        footer>p{
+            text-align: center;
+            padding: 10px 0px 15px 0px;
+        }
 
-       aside > p{
-        text-align: justify;
-        top: 40px;
-       }
+        a{
+            font-size: 1.2em;;
+            color: rgb(0, 0, 110);
+            text-decoration: none;
+            text-align: center;
+        }
+
     </style>
 </head>
 <body>
@@ -53,13 +71,19 @@
     </header>
 
     <main>
-        <picture>
-            <img src="imagens/joca.jpg" alt="J">
-        </picture>
-        <aside>
+        <img src="imagens/joca.jpg" alt="J">
+
+         <aeticle>
+            <p>O Joaquim é o melhor filho do mundo, ele é esperto, brincalhão e gamer</p>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius officia minus tempore! Molestiae similique quibusdam molestias eos temporibus nemo explicabo qui. Nam sed sunt cum. Nemo quaerat numquam reprehenderit quidem.</p>
-        </aside>
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minima accusantium excepturi nulla, quis ipsum ullam laudantium tempora blanditiis eos? Iusto corrupti possimus, inventore itaque voluptate non sequi temporibus esse magnam!</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus tempora sunt dolorum, qui excepturi aspernatur temporibus. Maiores amet itaque vel iusto doloremque. Reprehenderit natus sed possimus ea porro, totam voluptatum!</p>
+         </aeticle>
     </main>
+
+    <footer>
+        <p><a href="index.html">voltar para a tela anterior</a></p>
+    </footer>
     
 </body>
 </html>
