@@ -4,14 +4,106 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Menu fixo</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+
+        header{
+            position: relative;
+            background-color: lightgray;
+            height:150px;
+            border-radius: 20px 20px 0px 0px;
+        }
+
+        h1{
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 4em;
+            color: white;
+            padding: 80px 0px 15px 15px;
+        }
+
+        nav{
+            position: sticky;
+            width: 100vw;
+            top: 0px;
+            display:flex;
+            background-color:black;
+            height: 40px;
+            flex-direction: row;
+            place-items:center;
+            gap:5px;
+        }
+
+        a{
+            font-family:Arial, Helvetica, sans-serif;
+            font-size: 1.3em;
+            color: white;
+            padding:3px;
+            text-decoration:none;
+        }
+
+        main{
+            display: flex;
+            flex-direction:column;
+            gap:3px;
+            margin: 3px;
+        }
+
+        .conteudo1{
+            background-color: blue;
+            border-radius:10px;
+            height:400px;
+        }
+        
+        .conteudo2{
+            background-color: yellow;
+            border-radius:10px;
+            height:100px;
+        }
+
+        .conteudo3{
+            background-color: blue;
+            height:600px;
+        }
+
+        .conteudo4{
+            background-color: red;
+            border-radius:10px;
+            height: 400px;
+        }
+
+        footer{
+            background-color:black;
+        }
+
+        footer > p{
+            color:white;
+            text-align:center;
+        }
+    </style>
 </head>
 <body>
-    <header>Website</header>
+    <header>
+        <h1>Website</h1>
+    </header>
     <nav>
-        <a href="$"></a>
-        <a href=""></a>
-        <a href=""></a>
-        <a href=""></a>
+        <a href="#">Opition 1</a>
+        <a href="#">Opition 2</a>
+        <a href="#">Opition 3</a>
+        <a href="#">Opition 4</a>
     </nav>
+
+    <main>
+        <div class="conteudo1">conteudo 1</div>
+        <div class="conteudo2"></div>
+        <div class="conteudo3"></div>
+        <div class="conteudo4"></div>
+    </main>
+
+    <footer>
+        <p>Fim da página</p>
+    </footer>
 </body>
 </html>
