@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>teste blur</title>
+    <style>
+    *{
+        margin:0;
+        padding:0;
+        box-sizing: border-box;
+    }
+
+    header{
+        background-color: rgb(31, 138, 205);
+        border-radius: 30px 30px 0px 0px;
+    }
+
+    ul{
+        list-style: none;
+    }
+
+    a{
+        color: white;
+        text-decoration: none;
+    }
+    header > h1{
+        font-size: 5em;
+        padding-top: 40px;
+        margin-left: 10px;
+        text-shadow: 2px 2px 4px white;
+    }
+
+    .menubar{
+        display: flex;
+        gap: 30px;
+        font-size: 20px;
+        margin-left: 10px;
+    }
+
+    .menubar > li{
+        position:relative;
+    }
+
+    .menubar > li a{
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .opcoes{ 
+        display: none;
+        position: absolute;
+        width: 110px;
+        top: 23px;
+        left: -8px;
+        background-color: rgb(31, 138, 205);
+        border: 1px solid black;
+        border-radius: 10px;
+        padding: 5px 0px;
+        box-shadow: 10px 10px 4px rgba(0, 0, 0, 0.588);
+    }
+
+    .opcoes > li > a:hover{
+        background-color: rgba(0, 0, 255, 0.25);
+        text-decoration: underline;
+        border-radius: 1000px;
+    }
+    .opcoes > li > a{
+        display: flex;
+        flex-direction: column;
+        font-size: 16px;
+    }
+
+    .menubar > li:hover .buttom{
+        border-radius: 1000px;
+        color: white;
+        border: 1px solid black;
+        box-shadow: 0px 0px black, inset -5px -5px rgba(0, 0, 0, 0.2)
+    }
+
+
+    .menubar > li:hover .opcoes{
+        display: flex;
+        flex-direction: column;
+        outline: 1px solid white;
+    }
+
+    main{
+        background-color: rgba(0, 255, 255, 0.551);
+    }
+
+    main > p{
+        margin: 0px 20px;
+        font-size: 18px;
+        font-family: Arial, Helvetica, sans-serif;
+        text-indent: 15px;
+        line-height: 1.3;
+        text-align: justify;
+    }
+
+    footer{
+        background-color: black;
+    }
+
+    footer > p{
+        color: white;
+        text-align: center;
+    }
+    </style>
+</head>
+<body>
+        <header>
+            <h1>Menú Expansivo</h1>
+            <nav>
+                <ul class="menubar">
+                    <li>
+                        <a class="buttom" href="#">Menu 1</a>
+                        <ul class="opcoes">
+                            <li><a href="#">Opção 1</a></li>
+                            <li><a href="#">Opção 2</a></li>
+                            <li><a href="#">Opção 3</a></li>
+                            <li><a href="#">Opção 4</a></li>
+                            <li><a href="#">Opção 5</a></li>    
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a class="buttom" href="#">Menu 2</a>
+                        <ul class="opcoes">
+                            <li><a href="#">Opção 1</a></li>
+                            <li><a href="#">Opção 2</a></li>
+                            <li><a href="#">Opção 3</a></li>
+                            <li><a href="#">Opção 4</a></li>
+                            <li><a href="#">Opção 5</a></li>    
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a class="buttom" href="#">Menu 3</a>
+                        <ul class="opcoes">
+                            <li><a href="#">Opção 1</a></li>
+                            <li><a href="#">Opção 2</a></li>
+                            <li><a href="#">Opção 3</a></li>
+                            <li><a href="#">Opção 4</a></li>
+                            <li><a href="#">Opção 5</a></li>    
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a  class="buttom" href="#">Menu 4</a>
+                        <ul class="opcoes">
+                            <li><a href="#">Opção 1</a></li>
+                            <li><a href="#">Opção 2</a></li>
+                            <li><a href="#">Opção 3</a></li>
+                            <li><a href="#">Opção 4</a></li>
+                            <li><a href="#">Opção 5</a></li>    
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Asperiores quasi praesentium quibusdam? Est eius deleniti, deserunt numquam perspiciatis earum sequi quia minima odio voluptas ex dolore porro eligendi, voluptatum explicabo.
+            Exercitationem soluta quisquam officia nobis et modi nemo, itaque repellendus consequatur quam, vero nihil ad maiores distinctio rerum tempore, iste porro sit sapiente incidunt! Nam praesentium voluptas reiciendis omnis nobis?
+            Aliquam laudantium nesciunt tempora pariatur fugit cumque culpa unde mollitia maiores dicta, animi iste id doloremque. Commodi neque laborum recusandae debitis molestias, perferendis voluptas pariatur? Quaerat neque aspernatur maiores nesciunt.
+            Aspernatur ea sunt veritatis quia illo odio voluptatum quod assumenda molestiae esse. Sint incidunt error, assumenda blanditiis totam magni, reiciendis laborum aliquid in alias ut tempora dignissimos ducimus odit! Esse!
+            Ad, eos cupiditate! Deleniti deserunt voluptates, obcaecati, quasi sequi, at beatae quo exercitationem quis dolores rerum odio facere. Suscipit sit quisquam ut nam deserunt dolorem, beatae eos fugit ab quae.
+            Repudiandae ab similique magni saepe, qui ut ratione maxime repellendus, quas harum iusto modi cumque. Ipsa rem minima voluptatem nam, dolorem labore placeat facilis perspiciatis soluta, velit blanditiis, cumque aperiam?
+            Maxime quis saepe odio quasi totam, nisi ut dolores aperiam adipisci voluptates, facere minus ipsum accusantium at animi, et dignissimos. Non vitae, accusamus assumenda ab quam suscipit fuga quae! Voluptatum!
+            Dolore culpa, unde repellat cumque odit recusandae vitae blanditiis sunt nulla sequi iste libero provident. Corporis ipsam nam ducimus et, eligendi cum doloribus minima nesciunt quo accusamus asperiores nostrum expedita?
+            Tenetur nam magni fugit debitis culpa libero, sunt velit temporibus. Recusandae repellendus vero incidunt libero omnis culpa. Quasi voluptate quaerat voluptatem eum unde commodi autem odio nostrum. Consequatur, blanditiis quam.
+            Id assumenda, velit ipsum maiores facere voluptatem cupiditate laboriosam? Maxime, pariatur delectus incidunt magnam asperiores officiis nulla, iusto in provident vitae odio odit voluptatibus voluptatum dolorum iste nisi nesciunt. Similique.
+            Numquam a eum placeat maiores odit in rerum nisi corporis voluptatem, corrupti omnis? Beatae sunt a, neque dignissimos ut ducimus molestias, cumque tempora iste error ab enim, nulla aliquid iure?
+            Maxime nisi ducimus tenetur modi minus repellat facilis odit reprehenderit sapiente officiis, ullam voluptates neque expedita autem esse quis doloribus aliquam obcaecati delectus a minima iure architecto blanditiis. Asperiores, pariatur.
+            Sit eius sunt possimus laborum atque nisi nam quos culpa doloribus eligendi pariatur, inventore expedita, veniam ab nulla mollitia iste ex maiores. Tenetur, pariatur inventore cum molestias laborum labore laudantium.
+            Facere deserunt officiis eum itaque temporibus eveniet consequuntur eos quas blanditiis vel numquam quasi excepturi, sit magnam enim adipisci corporis atque expedita necessitatibus. Unde molestias laudantium maxime voluptatum, harum itaque.
+            Quaerat alias fuga sed nihil laudantium obcaecati voluptates eius incidunt, odio eos id voluptatibus at, iste eligendi modi, ex tempora hic blanditiis! Quod harum minus magnam. Obcaecati harum odio quaerat.
+            A atque laborum odio accusamus pariatur deleniti voluptate? Deleniti, alias natus officiis soluta tempora dicta veritatis, eaque totam, animi cum quia! Saepe doloribus possimus vel praesentium molestias laborum impedit reiciendis.
+            Quod sint, consectetur voluptatem quia cumque nostrum? Aspernatur libero architecto laudantium deserunt at accusantium provident ab explicabo consequatur quos dolores quaerat neque recusandae sint rem laborum officiis, vel et voluptates!
+            Unde, aliquid mollitia. Ipsam ullam dolorem nesciunt facilis. Labore modi saepe reprehenderit repellendus nemo itaque sed soluta? Aperiam officiis, non sit eius, eveniet error eligendi architecto, quae quas consectetur iusto?
+            Itaque accusantium ducimus veritatis illo suscipit earum illum placeat architecto quasi ut nam debitis officia maiores, dolorum odit nobis iste consectetur provident aspernatur libero iusto explicabo. Iste nesciunt quas eius.
+            Sed, sint sunt impedit sit ut recusandae perferendis rerum enim, ducimus delectus blanditiis dignissimos consequatur quibusdam excepturi placeat aperiam fugit distinctio et ex a fuga pariatur amet. Distinctio, at maxime.</p>
+        </main>
+
+        <footer>
+            <p>fim da página</p>
+        </footer>
+</body>
+</html>
