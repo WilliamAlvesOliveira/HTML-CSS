@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário</title>
+</head>
+<body>
+    <h1>Teste de formulário</h1>
+
+    <form action="cadastro.php" method="post"> <!--autocomplete na tag form so aceita on/off-->
+        <p><label for="iusu">Usuário: </label>
+        <input type="text" nome="uau" id="iusu" required minlength="3" maxlength="15" size="10" placeholder="nome" autocomplete="username"></p><!--no imput existem inumeras opções-->
+        <p>
+            <label for="id_senha">Senha: </label>
+            <input type="password" name="sen" id="id_senha" required minlength="8">
+        </p>
+
+        <p>
+            <input type="submit" value="enviar">
+            <input type="reset" value="limpar">
+        </p>
+    </form>
+    
+</body>
+</html>
