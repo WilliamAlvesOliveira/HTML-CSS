@@ -4,8 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Media Query</title>
+    <link rel="stylesheet" href="estilos/style.css">
+    <link rel="stylesheet" href="estilos/media_query.css">
 </head>
 <body>
-    
+    <main>
+        <h1>Testando Média Queries</h1>
+        <picture>
+            <source media="print" srcset="imagens/icon-print.png">
+            <source media="(max-width: 768px)" srcset="imagens/icon-phone.png">
+            <source media="(max-width: 992px)" srcset="imagens/icon-tablet.png">
+            <source media="(max-width:1200px)" srcset="imagens/icon-pc.png">
+            <img id="dispositivo" src="imagens/icon-tv.png" alt="dispositivo">          
+        </picture>
+        <img id="impressora" src="imagens/icon-print.png" alt="impressora"> 
+    </main>
 </body>
 </html>

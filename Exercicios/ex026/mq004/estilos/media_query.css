@@ -1,0 +1,35 @@
+@charset "UTF-8";
+
+/* Versão Impressora*/@media print {
+    h1{
+        font-family: 'Courier New', Courier, monospace;
+        color: black;
+        text-shadow: none;
+    }
+    #dispositivo{
+        display: none;
+    }
+
+    #impressora{
+        display: block;
+        margin: auto;
+    }
+}
+
+/* Versão Tablet*/@media(min-width:759px){
+    body{
+        background-image: url(../imagens/back-tablet.jpg);
+    }
+}
+
+/* Versão Desktop*/@media(min-width:992px){
+    body{
+        background-image: url(../imagens/back-pc.jpg);
+    }
+}
+
+/* Versão TV*/@media(min-width: 1200px){
+    body{
+        background-image: url(../imagens/back-tv.jpg);
+    }
+}
