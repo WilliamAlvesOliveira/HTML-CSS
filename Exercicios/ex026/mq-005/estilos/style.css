@@ -22,7 +22,7 @@ header>h1{
 
 span#burger{
     background-color: rgb(48,48,48);
-    display: block;
+    display: block; 
     color: white;
     text-align: center;
     padding: 5px;
