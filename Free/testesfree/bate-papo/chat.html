@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Teste de chat de Mensagens</h1>
+    <main id="dados">
+        <fieldset>
+            <label for="texto">Mensagem: </label>
+            <input type="text" name="texto" id="texto" placeholder="Digite a sua mensagem"><br>
+            <input type="button" value="enviar" onclick="enviarmsg()">
+            <input type="reset" value="limpar">
+        </fieldset>
+
+        <div id="mensagens">
+            
+        </div>
+    </main>
+
+    <script src="chat.js"></script>
+
+</body>
+</html>
