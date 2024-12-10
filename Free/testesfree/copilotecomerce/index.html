@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shoe Store</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Shoe Store</h1>
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">Cart</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="products">
+            <h2>Our Shoes</h2>
+            <div class="product" data-id="1" data-name="Running Shoe" data-price="59.99">
+                <h3>Running Shoe</h3>
+                <p>Price: $59.99</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+            <div class="product" data-id="2" data-name="Casual Sneaker" data-price="39.99">
+                <h3>Casual Sneaker</h3>
+                <p>Price: $39.99</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+            <!-- Add more products as needed -->
+        </section>
+
+        <section class="cart">
+            <h2>Shopping Cart</h2>
+            <ul id="cart-list"></ul>
+            <p>Total: $<span id="total-price">0.00</span></p>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
