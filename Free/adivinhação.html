@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>adivinhação</title>
+</head>
+<body>
+    <h1>Adivinhe o número!</h1>
+
+    <p>palpite <input type="number" id="numero" placeholder="de 0 até 100"></p>
+    <p><input type="button" value="dar palpite" onclick="adivinhacao()"></p>
+    <div id="resultado">
+
+    </div>
+    <script>
+        var computador = Math.floor(Math.random() * 100) + 1;
+        document.getElementById('numero').focus()
+
+        function adivinhacao(){
+            let entrada = document.getElementById('numero').value
+            let mensagem = document.querySelector('#resultado')
+
+            if (entrada ===''){
+                alert('Digite o palpite')
+            }else{
+                let numero = Number(entrada)
+    
+                if (numero === computador){
+                    mensagem.innerHTML = '<p>PARABÉNS, Você acertou!</p>'
+                    mensagem.style.fontSize = '3em'
+                    mensagem.style.color = 'red'
+                }else if (computador > numero){
+                    mensagem.innerHTML = '<p>Você errou! Meu número é <strong>maior</strong>.</p>'
+                }else{
+                    mensagem.innerHTML = '<p>Você errou! Meu número é <strong>menor</strong>.</p>'
+                }
+                document.getElementById('numero').value = ''
+                document.getElementById('numero').focus()
+            }
+        }
+        
+    </script>
+</body>
+</html>
