@@ -4,15 +4,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>adivinhação</title>
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+            background-color: black;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        h1{
+            text-decoration: underline;
+        }
+
+        main{
+            background-color: white ;
+            height: 350px;
+            margin-top: 100px;
+            display: flex;
+            width: 500px;
+            flex-direction: column;
+            align-items: center;
+            outline: 3px solid white;
+            border: 2px solid black;
+            border-radius: 10px;
+        }
+
+        div> p {
+            text-align: center;
+            font-size: 30px;
+        }
+    </style>
 </head>
 <body>
-    <h1>Adivinhe o número!</h1>
-
-    <p>palpite <input type="number" id="numero" placeholder="de 0 até 100"></p>
-    <p><input type="button" value="dar palpite" onclick="adivinhacao()"></p>
-    <div id="resultado">
-
-    </div>
+    <main>
+        <h1>Adivinhe o número!</h1>
+        <p>palpite <input type="number" id="numero" placeholder="de 0 até 100"></p>
+        <p><input type="button" value="dar palpite" onclick="adivinhacao()"></p>
+        <div id="resultado">
+        </div>
+    </main>
     <script>
         var computador = Math.floor(Math.random() * 101)
         document.getElementById('numero').focus()
@@ -27,9 +57,9 @@
                 let numero = Number(entrada)
     
                 if (numero === computador){
-                    mensagem.innerHTML = '<p>PARABÉNS, Você acertou!</p>'
-                    mensagem.style.fontSize = '3em'
                     mensagem.style.color = 'red'
+                    mensagem.innerHTML = '<p>PARABÉNS, Você acertou!</p>'
+                    computador = Math.floor(Math.random() * 101)
                 }else if (computador > numero){
                     mensagem.innerHTML = '<p>Você errou! Meu número é <strong>maior</strong>.</p>'
                 }else{
