@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de Notícias</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-around;
+            height: 100%;
+        }
+
+        .noticias {
+            width: 100%;
+            max-width: 600px;
+            background-color: #f1f1f1;
+            padding: 20px;
+        }
+
+        .anuncio {
+            position: -webkit-sticky; /* Para compatibilidade com navegadores WebKit */
+            position: sticky;
+            bottom: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        .propaganda {
+            background-color: #ffcc00;
+            padding: 20px;
+            border: 1px solid #ccc;
+            width: 100%;
+            max-width: 300px;
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="noticias">
+            <!-- Conteúdo fixo de notícias -->
+            <p>Notícia 1</p>
+            <p>Notícia 2</p>
+            <p>Notícia 3</p>
+            <p>Notícia 4</p>
+            <!-- Mais conteúdo -->
+        </div>
+        <div class="anuncio">
+            <!-- Propaganda que fica fixa no centro -->
+            <div class="propaganda">
+                <p>Propaganda</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
