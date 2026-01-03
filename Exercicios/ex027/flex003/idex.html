@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flex Wrap</title>
+
+    <style>
+        /* 
+        A propriedade flex-wrap define se os itens flexíveis 
+        devem permanecer em uma única linha ou se podem 
+        "quebrar" para formar múltiplas linhas dentro do 
+        contêiner flex. 
+        - valor padrão: nowrap → todos os itens ficam em uma só linha
+        - wrap → itens quebram para o cross axis quando não há espaço
+        - wrap-reverse → itens quebram para novas linhas(cross axis), mas em ordem inversa
+        */
+
+        html{
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        code{
+            font-size: 1.3em;
+            color: red;
+        }
+
+        .container1{
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+
+            background-color: lightsalmon;
+            margin-bottom: 20px;
+        }
+
+        .container2{
+            display: flex;
+            flex-wrap: wrap;
+
+            background-color: lightsalmon;
+            margin-bottom: 20px;
+        }
+        
+        .container3{
+            display: flex;
+            flex-wrap: wrap-reverse;
+
+            background-color: lightsalmon;
+            margin-bottom: 20px;
+        }
+        
+        .container4{
+            display: flex;
+            flex-flow: row nowrap;
+
+            background-color: lightsalmon;
+            margin-bottom: 20px;
+        }
+        .container5{
+            display: flex;
+            flex-flow: row wrap;
+
+            background-color: lightsalmon;
+            margin-bottom: 20px;
+        }
+        .container6{
+            display: flex;
+            flex-flow: row wrap-reverse;
+
+            background-color: lightsalmon;
+            margin-bottom: 20px;
+        }
+
+        .item{
+            background-color: lightskyblue;
+            border: 1px solid black;
+            text-align: center;
+            padding: 10px;
+            min-width: 20%;
+        }
+
+        .itemAuto{
+            flex: auto;
+            background-color: lightskyblue;
+            border: 1px solid black;
+            text-align: center;
+            padding: 10px;
+            min-width: 20%;
+        }
+
+        p{
+            font-weight: bold;
+        }
+
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center;">Propriedade flex-wrap</h1>
+
+    <p>fkexwrap: nowrap</p>
+    <div class="container1">
+        <div class="item">A</div>
+        <div class="item">B</div>
+        <div class="item">C</div>
+        <div class="item">D</div>
+        <div class="item">E</div>
+        <div class="item">F</div>
+        <div class="item">G</div>
+    </div>
+
+    <p>flexwrap: wrap</p>
+    <div class="container2">
+        <div class="item">A</div>
+        <div class="item">B</div>
+        <div class="item">C</div>
+        <div class="item">D</div>
+        <div class="item">E</div>
+        <div class="item">F</div>
+        <div class="item">G</div>
+    </div>
+    
+    <p>flexwrap: wrap-reverse</p>
+    <div class="container3">
+        <div class="item">A</div>
+        <div class="item">B</div>
+        <div class="item">C</div>
+        <div class="item">D</div>
+        <div class="item">E</div>
+        <div class="item">F</div>
+        <div class="item">G</div>
+    </div>
+
+    <h2 style="text-align: center;">Propriedade flex-flow</h2>
+    <p>A propriedade(short hand) <code>flex-flow</code> é uma junção das propriedades <code>flex-dorection</code> e <code>flex-wrap</code></p>
+
+    <small>elementos com <code>flex:auto</code> para preencherem os espaços</small>
+
+    <p>flex-flow: row nowrap</p>
+    <div class="container4">
+        <div class="itemAuto">A</div>
+        <div class="itemAuto">B</div>
+        <div class="itemAuto">C</div>
+        <div class="itemAuto">D</div>
+        <div class="itemAuto">E</div>
+        <div class="itemAuto">F</div>
+        <div class="itemAuto">G</div>
+    </div>
+
+    <p>flex-flow: row wrap</p>
+    <div class="container5">
+        <div class="itemAuto">A</div>
+        <div class="itemAuto">B</div>
+        <div class="itemAuto">C</div>
+        <div class="itemAuto">D</div>
+        <div class="itemAuto">E</div>
+        <div class="itemAuto">F</div>
+        <div class="itemAuto">G</div>
+    </div>
+
+    <p>flex-flow: row wrap-reverse</p>
+    <div class="container6">
+        <div class="itemAuto">A</div>
+        <div class="itemAuto">B</div>
+        <div class="itemAuto">C</div>
+        <div class="itemAuto">D</div>
+        <div class="itemAuto">E</div>
+        <div class="itemAuto">F</div>
+        <div class="itemAuto">G</div>
+    </div>
+</body>
+</html>
