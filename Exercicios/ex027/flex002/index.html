@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flexible Box</title>
+    <style>
+        html{
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        /* 
+        Podemos controlar a direção em que os elementos filhos 
+        serão organizados dentro do contêiner flex. 
+        O alinhamento ocorre em dois eixos:
+            - Eixo principal (main axis)
+            - Eixo cruzado ou transversal (cross axis)
+        Essa direção é definida pela propriedade "flex-direction".
+        */
+
+        .container1{
+            display: flex;
+
+            background-color: lightsalmon;
+            flex-direction: row;
+            margin-bottom: 20px;
+        }
+
+        .container2{
+            display: flex;
+
+            background-color: lightsalmon;
+            flex-direction: row-reverse;
+            margin-bottom: 20px;
+        }
+
+        .container3{
+            display: flex;
+
+            background-color: lightsalmon;
+            flex-direction: column;
+            margin-bottom: 20px;
+        }
+
+        .container4{
+            display: flex;
+
+            background-color: lightsalmon;
+            flex-direction: column-reverse;
+            margin-bottom: 20px;
+        }
+
+        .container5{
+            display: flex;
+
+            background-color: lightsalmon;
+            flex-direction: row;
+            margin-bottom: 20px;
+        }
+
+        .item{
+            background-color: lightskyblue;
+            border: 1px solid black;
+            text-align: center;
+            padding: 10px;
+        }
+        
+        .itemAuto{
+            flex: auto;
+
+            background-color: lightskyblue;
+            border: 1px solid black;
+            text-align: center;
+            padding: 10px;
+        }
+
+        p{
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center;">Flex Directions</h1>
+
+    <p>direction row(padão)</p>
+    <div class="container1">
+        <div class="item">A</div>
+        <div class="item">B</div>
+        <div class="item">C</div>
+        <div class="item">D</div>
+        <div class="item">E</div>
+        <div class="item">F</div>
+        <div class="item">G</div>
+    </div>
+
+    <p>Direction row-reverse</p>
+    <div class="container2">
+        <div class="item">A</div>
+        <div class="item">B</div>
+        <div class="item">C</div>
+        <div class="item">D</div>
+        <div class="item">E</div>
+        <div class="item">F</div>
+        <div class="item">G</div>
+    </div>
+
+    <p>Direction column</p>
+    <div class="container3">
+        <div class="item">A</div>
+        <div class="item">B</div>
+        <div class="item">C</div>
+        <div class="item">D</div>
+        <div class="item">E</div>
+        <div class="item">F</div>
+        <div class="item">G</div>
+    </div>
+
+    <p>Direction column-reverse</p>
+    <div class="container4">
+        <div class="item">A</div>
+        <div class="item">B</div>
+        <div class="item">C</div>
+        <div class="item">D</div>
+        <div class="item">E</div>
+        <div class="item">F</div>
+        <div class="item">G</div>
+    </div>
+
+    <p>Direction row / flex: auto(aplicado nos elementos filhos)</p>
+    <div class="container5">
+        <div class="itemAuto">A</div>
+        <div class="itemAuto">B</div>
+        <div class="itemAuto">C</div>
+        <div class="itemAuto">D</div>
+        <div class="itemAuto">E</div>
+        <div class="itemAuto">F</div>
+        <div class="itemAuto">G</div>
+    </div>
+    
+</body>
+</html>
