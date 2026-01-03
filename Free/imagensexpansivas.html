@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Imagens Redimensionáveis</title>
+    <style>
+        .container {
+            width: 500px;
+            display: flex;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .container .image-box {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: flex-grow 0.3s ease;
+        }
+
+        .container .image-box img {
+            width: 100%;
+            max-width: 200px;
+            transition: width 0.3s ease;
+        }
+
+        .container .image-box:hover {
+            flex-grow: 3;
+        }
+
+        .container .image-box:not(:hover) {
+            flex-grow: 1;
+        }
+
+        .container .image-box:hover img {
+            width: 200px;
+        }
+
+        .container .image-box:not(:hover) img {
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="image-box" id="box1"><img src="image1.jpg" alt="Imagem 1"></div>
+        <div class="image-box" id="box2"><img src="image2.jpg" alt="Imagem 2"></div>
+        <div class="image-box" id="box3"><img src="image3.jpg" alt="Imagem 3"></div>
+        <div class="image-box" id="box4"><img src="image4.jpg" alt="Imagem 4"></div>
+    </div>
+
+    <script>
+        const imageBoxes = document.querySelectorAll('.image-box');
+
+        imageBoxes.forEach(box => {
+            box.addEventListener('mouseover', () => {
+                imageBoxes.forEach(b => {
+                    if (b !== box) {
+                        b.classList.remove('hover');
+                    }
+                });
+                box.classList.add('hover');
+            });
+
+            box.addEventListener('mouseout', () => {
+                imageBoxes.forEach(b => b.classList.remove('hover'));
+            });
+        });
+    </script>
+</body>
+</html>

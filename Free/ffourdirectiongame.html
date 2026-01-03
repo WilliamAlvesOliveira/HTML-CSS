@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid Game Screen</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            width: 100vw;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #gridcontainer {
+            margin: auto;
+            padding: 2px;
+            width: 100%;
+            height: 100%;
+            display: grid;
+            grid-template-columns: 10% 90%; /* Define duas colunas */
+            grid-template-rows: auto auto auto; /* Define três linhas */
+            align-content: space-between;
+        }
+
+        .header {
+            grid-column: 1 / -1; /* Ocupa a largura total da linha */
+            grid-row: 1 / 2; /* Primeira linha */
+            background-color: gray;
+        }
+
+        .header > h1{
+            text-align: center;
+            font-size: 3vw;
+            color: white;
+        }
+
+        .orientação-y {
+            grid-column: 1 / 2; /* Ocupa a primeira coluna */
+            grid-row: 2 / 3; /* Segunda linha */
+        }
+
+        .verticais{
+            display: flex;
+            margin: auto;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+            width: 100%;
+        }
+
+        #screen {
+            grid-column: 2 / 3; /* Ocupa a segunda coluna */
+            grid-row: 2 / 3; /* Segunda linha */
+            width: 75%;
+            aspect-ratio: 16/9;
+            margin: auto;
+            border: 1px solid black;
+            background-color: lightgray;
+        }
+
+        .orientação-x {
+            grid-column: 1 / -1; /* Ocupa a largura total da linha */
+            grid-row: 3 / 4; /* Terceira linha */
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+        }
+
+        .horizontais{
+            display: flex;
+            width: 99%;
+        }
+
+        .botão {
+            margin: auto;
+            border-radius: 20px;
+            width: 98%;
+            height: 98%;
+            font-size: 2vw;
+        }
+
+        @media(max-width:500px){
+            #gridcontainer > h1{
+                font-size: 8vw;
+            }
+
+            .botão{font-size: 6vw;}
+        }
+
+        @media (orientation : portrait){
+            #screen{
+                width: 97%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="gridcontainer">
+        <div class="header">
+            <h1>Nome do Jogo</h1>
+        </div>
+
+        <div class="orientação-y">
+            <div class="verticais">
+                <button class="botão">Up</button>
+                <button class="botão">Down</button>
+            </div>
+        </div>
+
+        <canvas id="screen"></canvas>
+
+        <div class="orientação-x">
+            <div class="horizontais">
+                <button class="botão">Right</button>
+                <button class="botão">Left</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

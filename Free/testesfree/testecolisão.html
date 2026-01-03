@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>teste de colisão</title>
+    <style>
+        body{
+        
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center;">Teste de Colisão</h1>
+
+    <div><h2 style="text-align: center;">tela do jogo</h2><canvas id="telacanvas" style="border: 1px solid black;" width="200px" height="200px"></canvas></div>
+
+    <script>
+        const canvas = document.querySelector('#telacanvas');
+        const ctx = canvas.getContext('2d');
+
+        let cowx = 100;
+        let cowy = 140;
+
+        let grassEaten = false;
+        let grassx = 40
+        let grassy = 140
+
+        function drawcena(){
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            ctx.fillStyle = '#0000ff';
+            ctx.fillRect(0, 0, canvas.width, 80);
+
+            ctx.fillStyle = '#00ff00';
+            ctx.fillRect(0, 80, canvas.width, canvas.height);
+
+            ctx.beginPath();
+            ctx.arc(20, 20, 10, 0, Math.PI * 2, false);
+            ctx.fillStyle = '#ffffff';
+            ctx.fill();
+            ctx.closePath();
+
+            ctx.beginPath();
+            ctx.arc(33, 20, 10, 0, Math.PI * 2, false);
+            ctx.fillStyle = '#ffffff';
+            ctx.fill();
+            ctx.closePath();
+
+            ctx.beginPath();
+            ctx.arc(46, 20, 10, 0, Math.PI * 2, false);
+            ctx.fillStyle = '#ffffff';
+            ctx.fill();
+            ctx.closePath();
+
+            ctx.beginPath();
+            ctx.arc(100, 30, 20, 0, Math.PI * 2, false);
+            ctx.strokeStyle = 'yellow';
+            ctx.stroke();
+            ctx.closePath();
+
+            ctx.beginPath();
+            ctx.arc(180, 20, 10, 0, Math.PI * 2, false);
+            ctx.fillStyle = '#ffffff';
+            ctx.fill();
+            ctx.closePath();
+
+            ctx.beginPath();
+            ctx.arc(167, 20, 10, 0, Math.PI * 2, false);
+            ctx.fillStyle = '#ffffff';
+            ctx.fill();
+            ctx.closePath();
+
+            ctx.beginPath();
+            ctx.arc(154, 20, 10, 0, Math.PI * 2, false);
+            ctx.fillStyle = '#ffffff';
+            ctx.fill();
+            ctx.closePath();
+        }
+
+        function draw_a_cow(){
+            ctx.beginPath();
+            ctx.arc(cowx, cowy, 10, 0, Math.PI * 2, false);
+            ctx.strokeStyle = '#000000';
+            ctx.stroke();
+            ctx.closePath();
+
+            ctx.fillStyle = '#000000';
+            ctx.fillRect(cowx + 5, cowy + 4, 50, 20);
+        }
+
+        function movimento(){
+            if (keys['ArrowUp']){
+                if (cowy >= 58){
+                    cowy -= 1;
+                }
+            }
+
+            if (keys['ArrowDown']){
+                if (cowy < 176){
+                    cowy += 1;
+                }
+            }
+
+            if (keys['ArrowLeft']){
+                if (cowx > 10){
+                    cowx -= 1;
+                }
+            }
+
+            if (keys['ArrowRight']){
+                if (cowx < 145){
+                    cowx += 1;
+                }
+            }
+        }
+
+        function drawgrass(){
+            ctx.beginPath();
+            ctx.moveTo(grassx, grassy);
+            ctx.lineTo(grassx,grassy + 10);
+            ctx.lineTo(grassx + 4,grassy + 10);
+            ctx.closePath();
+
+            ctx.fillStyle = 'green';
+            ctx.fill();
+
+            ctx.beginPath();
+            ctx.moveTo(grassx + 5, grassy);
+            ctx.lineTo(grassx + 2 , grassy + 10);
+            ctx.lineTo(grassx + 10 , grassy + 10);
+            ctx.closePath();
+
+            ctx.fill();
+
+            ctx.beginPath();
+            ctx.moveTo(grassx + 11, grassy);
+            ctx.lineTo(grassx + 7, grassy + 10);
+            ctx.lineTo(grassx + 11, grassy + 10);
+            ctx.closePath();
+
+            ctx.fill();
+        }
+
+        function grassRandomPosition(){
+            let validPosition = false;
+
+            while (!validPosition){
+                grassx = 1 + Math.random()* (canvas.width - 11);
+                grassy = 80 + Math.random() * (canvas.height -80 - 10);
+
+                if((grassx> 4 || grassy < 186)&&(grassy< 186 || grassx > 4)){
+                    validPosition = true;
+                }
+            }
+        }
+
+        function cowHeadHitBox(){
+            return { x: cowx - 5, y: cowy - 5, width: 10, height: 15 };
+        }
+        
+        function cowBodyHitBox(){
+            return { x: cowx + 5, y: cowy + 4, width: 50, height: 20 };
+        }
+
+        function grassHitBox(){
+            return { x: grassx, y: grassy, width: 11, height: 10 };
+        }
+
+        function checkCollision(){
+            const cowHeadBox = cowHeadHitBox();
+            const cowBodyBox = cowBodyHitBox();
+            const grassBox = grassHitBox();
+            
+            if (
+                (cowHeadBox.x < grassBox.x + grassBox.width &&
+                 cowHeadBox.x + cowHeadBox.width > grassBox.x &&
+                 cowHeadBox.y < grassBox.y + grassBox.height &&
+                 cowHeadBox.y + cowHeadBox.height > grassBox.y) ||
+                (cowBodyBox.x < grassBox.x + grassBox.width &&
+                 cowBodyBox.x + cowBodyBox.width > grassBox.x &&
+                 cowBodyBox.y < grassBox.y + grassBox.height &&
+                 cowBodyBox.y + cowBodyBox.height > grassBox.y)
+            ) {
+                grassRandomPosition();
+            }
+        }
+
+        const keys = {};
+        window.addEventListener('keydown', (e) => {
+            keys[e.key] = true;
+        });
+        window.addEventListener('keyup', (e) => {
+            keys[e.key] = false;
+        });
+
+        function gameloop(){
+            drawcena();
+            draw_a_cow();
+            movimento();
+            drawgrass();
+            checkCollision();
+
+            requestAnimationFrame(gameloop);
+        }
+
+        gameloop();
+        
+    </script>
+    
+</body>
+</html>
