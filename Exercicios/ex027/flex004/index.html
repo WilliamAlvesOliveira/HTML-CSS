@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Justify Content</title>
+    <style>
+        html{
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        main{
+            width: 800px;
+            margin: auto;
+        }
+
+        h2{
+            text-align: center;
+        }
+        
+        code{
+            color: red;
+        }
+
+        .container{
+            display: flex;
+            justify-content: flex-start;
+
+            background-color: lightgray;
+        }
+        
+        .container2{
+            display: flex;
+            justify-content: flex-end;
+
+            background-color: lightgray;
+        }
+        
+        .container3{
+            display: flex;
+            justify-content: center;
+
+            background-color: lightgray;
+        }
+        
+        .container4{
+            display: flex;
+            justify-content: space-around;
+
+            background-color: lightgray;
+        }
+        
+        .container5{
+            display: flex;
+            justify-content: space-between;
+
+            background-color: lightgray;
+        }
+        
+        .container6{
+            display: flex;
+            justify-content: space-evenly;
+            
+
+            background-color: lightgray;
+        }
+        
+        .container7{
+            display: flex;
+            align-items: stretch;     
+
+            height: 50px;
+            background-color: lightgray;
+        }
+        
+        .container8{
+            display: flex;
+            align-items: flex-start;      
+
+            height: 50px;
+            background-color: lightgray;
+        }
+        
+        .container9{
+            display: flex;
+            align-items: flex-end;      
+
+            height: 50px;
+            background-color: lightgray;
+        }
+        
+        .container10{
+            display: flex;
+            align-items: center;      
+
+            height: 50px;
+            background-color: lightgray;
+        }
+        
+        .container11{
+            display: flex;
+            justify-content: center;
+            align-items: center;      
+
+            height: 50px;
+            background-color: lightgray;
+        }
+
+        .items{
+            aspect-ratio: 1/1;
+            width: 30px;
+            background-color: blue;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <h2>Propriedade:<code>justify-content</code></h2>
+        <p>A propriedade <code>justify-content</code> serve para definir como os elementos serão distribuídos pelo container pai no eixo principal <small>(main-axis)</small></p>
+
+        <small>*Container com <code>flex-direction: row</code><small> (padrão)</small></small>
+
+        <h2><code>justify-content: flex-start</code></h2>
+        <p>posiciona os elementos no eixo main-axis, a partir do main-start</p>
+        <div class="container">
+            <div class="items"></div>
+            <div class="items"></div>
+            <div class="items"></div>
+        </div>
+        
+        <h2><code>justify-content: flex-end</code></h2>
+        <p>posiciona os elementos no eixo main-axis, a partir do main-end</p>
+        <div class="container2">
+            <div class="items"></div>
+            <div class="items"></div>
+            <div class="items"></div>
+        </div>
+
+        <h2><code>justify-content: center</code></h2>
+        <p>centraliza os elementos no main-axis</p>
+        <div class="container3">
+            <div class="items"></div>
+            <div class="items"></div>
+            <div class="items"></div>
+        </div>
+
+        <h2><code>justify-content: space-around</code></h2>
+        <p>divide os main-axis pelo número de elementos e centraliza os elementos nesse espaço</p>
+        <div class="container4">
+            <div class="items"></div>
+            <div class="items"></div>
+            <div class="items"></div>
+        </div>
+
+        <h2><code>justify-content: space-between</code></h2>
+        <p>distribui os espaços entre os elementos de forma igual entre os elementos</p>
+        <div class="container5">
+            <div class="items"></div>
+            <div class="items"></div>
+            <div class="items"></div>
+        </div>
+
+        <h2><code>justify-content: space-evenly</code></h2>
+        <p>distribui os espaços de forma igual pelo container</p>
+        <div class="container6">
+            <div class="items"></div>
+            <div class="items"></div>
+            <div class="items"></div>
+        </div>
+
+        <h2>Propriedade <code>align-items</code></h2>
+        <p>Já a propriedade <code>align-items</code> é usada para distribuir os elementos no eixo transversal <small>(cross-axis)</small></p>
+
+        <p>Note que ao definir um tamanho <code>height</code> os elementos por padrão se ajustam ao tamanho do container pai, pois o comportamento padrão dos elementos é <code>align-items: stretch</code></p>
+        <div class="container7">
+            <div class="items"></div>
+            <div class="items"></div>
+            <div class="items"></div>
+        </div>
+
+        <h2><code>align-items: flex-start</code></h2>
+        <p>alinha os elementos a partir do cross-start</p>
+        <div class="container8">
+            <div class="items"></div>
+            <div class="items"></div>
+            <div class="items"></div>
+        </div>
+        
+        <h2><code>align-items: flex-end</code></h2>
+        <p>alinha os elementos a partir do cross-end</p>
+        <div class="container9">
+            <div class="items"></div>
+            <div class="items"></div>
+            <div class="items"></div>
+        </div>
+        
+        <h2><code>align-items: center</code></h2>
+        <p>alinha os elementos no centro do cross-axis</p>
+        <div class="container10">
+            <div class="items"></div>
+            <div class="items"></div>
+            <div class="items"></div>
+        </div>
+
+        <h2>Centralizando elementos no centro do container</h2>
+        <p>Como vimos antes podemos combinar ambas as propriedades para centralizar os elementos no centro do container</p>
+        <code>justify-content:center;</code><br>
+        <code>align-items:center;</code>
+        <div class="container11">
+            <div class="items"></div>
+            <div class="items"></div>
+            <div class="items"></div>
+        </div>
+    </main>
+</body>
+</html>
