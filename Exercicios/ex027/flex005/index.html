@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Propriedade Align-content</title>
+    <style>
+        html{
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        code{
+            color:red
+        }
+
+        main{
+            margin: auto;
+            width:800px ;
+        }
+
+        h1{
+            text-align: center;
+        }
+
+        .growth-area{
+            height: 180px;
+        }
+
+        .container{
+            display: flex;
+            flex-wrap: wrap;
+
+            width: 300px;
+            height: 150px;
+    
+            background-color: lightgray;
+            animation: changeWidth 3s infinite alternate;
+        }
+
+        .items{
+            aspect-ratio: 1/1;
+            width: 48px;
+            background-color: blue;
+            border: 1px solid black;
+        }
+
+        #ex1{
+            align-content: flex-start;
+        }
+
+        #ex2{
+            align-content: flex-end;
+        }
+        
+        #ex3{
+            align-content: center;
+        }
+
+        #ex4{
+            align-content: space-between
+        }
+
+        #ex5{
+            align-content: space-around;
+        }
+        
+        #ex6{
+            align-content: space-evenly;
+        }
+
+        @keyframes changeWidth{
+            from {
+                width: 300px;
+            }
+            to {
+                width: 150px;
+            }
+
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <h1>Propriedade <code>align-content</code></h1>
+
+        <p> propriedade <code>align-content</code> é utilizada em layouts com <em>flexbox</em> ou <em>grid</em> para controlar a distribuição das linhas de conteúdo dentro de um contêiner, <strong>quando ocorre quebra de linha.</strong>
+        Ela define como o espaço extra entre as linhas será distribuído, permitindo alinhar o conteúdo no início, no fim, ao centro ou espaçá-lo de forma uniforme.
+        </p>
+
+        <small>exemplo de container padrão com a propriedade <code>flex-wrap: wrap;</code></small>
+        <section class="growth-area">
+            <section class="container">
+                <div class="items"></div>
+                <div class="items"></div>
+                <div class="items"></div>
+                <div class="items"></div>
+                <div class="items"></div>
+            </section>
+            <small>notem que pelo comportamento padrão a propriedade dos elementos flex é <code>stretch</code> fazendo-os preencherem os espaço no eixo transversal(cross-axis)</small>
+        </section>
+        
+        <h2><code>align-content: flex-start</code></h2>
+        <p>Quando usamos <code>align-content: flex-start</code>, todas as linhas de conteúdo dentro do contêiner 
+        são agrupadas e alinhadas no início do eixo transversal (cross-axis). 
+        Isso significa que, se houver quebra de linha, as linhas ficarão encostadas na borda inicial do contêiner, 
+        sem ocupar o espaço extra disponível.
+        </p>
+
+        <section class="growth-area">
+            <section id="ex1" class="container">
+                <div class="items"></div>
+                <div class="items"></div>
+                <div class="items"></div>
+                <div class="items"></div>
+                <div class="items"></div>
+            </section>
+        </section>
+
+        <h2><code>align-content: flex-end</code></h2>
+        <p>
+        Com <code>align-content: flex-end</code>, todas as linhas de conteúdo dentro do contêiner 
+        são agrupadas e alinhadas no final do eixo transversal. 
+        Ou seja, se houver quebra de linha, elas ficarão encostadas na borda final do contêiner.
+        </p>
+        <section class="growth-area">
+            <section id="ex2" class="container">
+                <div class="items"></div>
+                <div class="items"></div>
+                <div class="items"></div>
+                <div class="items"></div>
+                <div class="items"></div>
+            </section>
+        </section>
+
+        <h2><code>align-content: center</code></h2>
+        <p>
+        Ao usar <code>align-content: center</code>, as linhas de conteúdo são centralizadas no eixo transversal. 
+        Isso faz com que o espaço extra seja distribuído igualmente acima e abaixo (ou à esquerda e à direita, dependendo da direção).
+        </p>
+        <section class="growth-area">
+            <section id="ex3" class="container">
+                <div class="items"></div>
+                <div class="items"></div>
+                <div class="items"></div>
+                <div class="items"></div>
+                <div class="items"></div>
+            </section>
+        </section>
+
+        <h2><code>align-content: space-between</code></h2>
+        <p>
+        Com <code>align-content: space-between</code>, a primeira linha é posicionada na borda inicial 
+        e a última linha na borda final do contêiner. As linhas intermediárias ficam distribuídas 
+        uniformemente entre elas, sem espaço nas extremidades.
+        </p>
+        <section class="growth-area">
+            <section id="ex4" class="container">
+                <div class="items"></div>
+                <div class="items"></div>
+                <div class="items"></div>
+                <div class="items"></div>
+                <div class="items"></div>
+            </section>
+        </section>
+
+        <h2><code>align-content: space-around</code></h2>
+        <p>
+        Ao aplicar <code>align-content: space-around</code>, cada linha recebe espaço igual em volta dela. 
+        Isso significa que há espaço tanto entre as linhas quanto nas extremidades do contêiner, 
+        mas o espaço nas bordas é metade do espaço entre as linhas.
+        </p>
+        <section class="growth-area">
+            <section id="ex5" class="container">
+                <div class="items"></div>
+                <div class="items"></div>
+                <div class="items"></div>
+                <div class="items"></div>
+                <div class="items"></div>
+            </section>
+        </section>
+
+        <h2><code>align-content: space-evenly</code></h2>
+        <p>
+        Com <code>align-content: space-evenly</code>, todas as linhas são distribuídas de forma uniforme, 
+        com espaços iguais entre elas e também nas extremidades do contêiner. 
+        É a forma mais equilibrada de espaçamento.
+        </p>
+        <section class="growth-area">
+            <section id="ex6" class="container">
+                <div class="items"></div>
+                <div class="items"></div>
+                <div class="items"></div>
+                <div class="items"></div>
+                <div class="items"></div>
+            </section>
+        </section>
+    </main>
+    
+</body>
+</html>
