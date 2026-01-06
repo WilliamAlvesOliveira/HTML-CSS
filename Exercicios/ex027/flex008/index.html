@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Propriedade flex-basis</title>
+    <style>
+        html{
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        code{
+            color: red;
+        }
+        
+        main{
+            max-width: 800px;
+            margin: auto;
+        }
+
+        main p{
+            text-indent: 20px;
+        }
+        
+        h1{
+            text-align: center;
+        }
+        
+        .container{
+            display: flex;
+
+            background-color: lightgray;
+        }
+
+        .items{
+
+            background-color: skyblue;
+            border: 1px solid black;
+        }
+
+        .basis{
+            flex-basis: 100px
+        }
+    </style>
+</head>
+<body>
+
+    <main>
+        <h1>Propriedade <code>flex-basis</code></h1>
+        <p>
+            A propriedade <code>flex-basis</code> define o tamanho inicial de um elemento flexível antes da distribuição de espaço extra dentro do container. 
+            Ela determina a largura ou altura base do item (dependendo da direção do eixo principal), servindo como referência para o cálculo do layout. 
+            Por padrão, o valor de <code>flex-basis</code> é <code>auto</code>, o que significa que o tamanho inicial do elemento será definido pelo seu conteúdo ou por outras propriedades de dimensão, como <code>width</code> e <code>height</code>.
+        </p>
+
+        <section>
+            <section class="container">
+                <div class="items">A</div>
+                <div class="items">item</div>
+                <div class="items">conteúdo</div>
+                <div class="items">item</div>
+                <div class="items">conteúdo extra</div>
+                <div class="items">conteúdo</div>
+            </section>
+            <small>Notem que o tamanho do elemento é definido pelo conteúdo dele</small>
+        </section>
+
+        <p>Podemos definir um valor para os elementos criados a partir da propriedade <code>flex-basis</code>assim cada conteúdo criado terá o valor inicial definido por essa propriedade</p>
+
+        <section class="container">
+            <div class="items basis">A</div>
+            <div class="items basis">item</div>
+            <div class="items basis">conteúdo</div>
+            <div class="items basis">item</div>
+            <div class="items basis">conteúdo extra</div>
+            <div class="items basis">conteúdo</div>
+        </section>
+        <small>
+            Neste exemplo, os elementos foram definidos com <code>flex-basis: 100px;</code>, o que estabelece um tamanho inicial de 100px para cada item. 
+            Esse valor será respeitado enquanto houver espaço disponível no container, podendo ser ajustado caso o layout exija redistribuição.
+        </small>
+
+        <p>
+            Quando não há espaço suficiente no container para acomodar todos os elementos com o tamanho definido em <code>flex-basis</code>, o Flexbox redistribui o espaço de acordo com as propriedades <code>flex-grow</code> e <code>flex-shrink</code>. 
+            Nesse cenário, os itens podem encolher proporcionalmente (se <code>flex-shrink</code> estiver habilitado) ou crescer para ocupar o espaço disponível (se <code>flex-grow</code> for maior que 0). 
+            Assim, o valor de <code>flex-basis</code> funciona apenas como ponto de partida, podendo ser ajustado dinamicamente para manter o layout flexível.
+        </p>
+
+        <small>neste exemplo o container pai tem uma largura de 400px</small>
+        <section class="container" style="width: 400px;">
+            <div class="items basis">A</div>
+            <div class="items basis">item</div>
+            <div class="items basis">conteúdo</div>
+            <div class="items basis">item</div>
+            <div class="items basis">conteúdo extra</div>
+            <div class="items basis">conteúdo</div>
+        </section>
+        <small>
+            Neste exemplo, os elementos também possuem <code>flex-basis: 100px;</code>, porém, como não há espaço suficiente, eles se ajustam proporcionalmente ao tamanho disponível no container pai.
+        </small>
+
+        <p>
+            Caso o container pai tenha a propriedade <code>flex-wrap</code> habilitada, o <code>flex-basis</code> continua sendo aplicado normalmente. 
+            Nesse cenário, os elementos respeitam o tamanho inicial definido e, se não houver espaço suficiente em uma única linha, eles serão distribuídos em múltiplas linhas ou colunas conforme o comportamento do <code>flex-wrap</code>.
+        </p>
+
+        <section class="container" style="width: 400px; flex-flow: row wrap;">
+            <div class="items basis">A</div>
+            <div class="items basis">item</div>
+            <div class="items basis">conteúdo</div>
+            <div class="items basis">item</div>
+            <div class="items basis">conteúdo extra</div>
+            <div class="items basis">conteúdo</div>
+        </section>
+        <small>
+            Neste exemplo, mesmo com o comprimento do container pai sendo de 400px, como a propriedade <code>flex-wrap: wrap;</code> está habilitada, os elementos podem manter o tamanho definido em <code>flex-basis</code> (neste caso, 100px), sendo distribuídos em múltiplas linhas conforme necessário.
+        </small>
+
+
+    </main>
+    
+</body>
+</html>
