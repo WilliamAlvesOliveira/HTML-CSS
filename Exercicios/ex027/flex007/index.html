@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Propriedade align-self</title>
+    <style>
+        html{
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        code{
+            color: red;
+        }
+
+        h1{
+            text-align: center;
+        }
+
+        main{
+            max-width: 800px;
+            margin: auto;
+        }
+
+        
+        .container{
+            display: flex;
+
+            width: 300px;
+            background-color: lightgray;
+        }
+
+        .items{
+            width: 48px;
+            background-color: skyblue;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <h2>Propriedade: <code>align-self</code></h2>
+        <p>
+            A propriedade <code>align-self</code> é aplicada nos elementos filhos de um container flex para controlar seu alinhamento individual em relação ao eixo transversal <small>(cross-axis)</small> definido pelo container. 
+            Por padrão, todos os elementos herdam o valor de <code>align-items</code> do container, mas ao utilizar <code>align-self</code> é possível sobrescrever esse comportamento para um item específico. 
+            Assim, cada elemento pode ter um alinhamento próprio sem afetar os demais.
+        </p>
+
+        <section>
+            <section class="container" style="height: 100px;">
+                <div class="items">A</div>
+                <div class="items">B</div>
+                <div class="items">C</div>
+                <div class="items">D</div>
+                <div class="items">E</div>
+                <div class="items">F</div>
+            </section>
+            <small>Comportamento padrão. *obs: os items por padrão tem como comportamento <code>flex: stretch</code> por isso preencheem o espaço vazio do eixo transversal <small>cross-axis</small></small>
+        </section>
+
+        <p>
+        Ao alterar a propriedade <code>align-self</code> <small>(que por padrão possui o valor <code>auto</code>, herdando o comportamento definido pelo align-items)</small>, é possível controlar o alinhamento individual de um elemento em relação ao eixo transversal (cross-axis) do container flex. 
+        Dessa forma, cada item pode ter uma disposição própria, independentemente da configuração aplicada aos demais.
+        </p>
+
+        
+        <section>
+            <small>
+                container com <code>align-items: flex-start;</code> e <code>height: 100px;</code>
+            </small>
+            <section class="container" style="height: 100px; align-items: flex-start;">
+                <div class="items" style="align-self: flex-start;">A</div>
+                <div class="items" style="align-self: auto;">B</div>
+                <div class="items" style="align-self: flex-end;">C</div>
+                <div class="items" style="align-self: auto;">D</div>
+                <div class="items" style="align-self: center">E</div>
+                <div class="items" style="align-self: stretch;">F</div>
+            </section>
+            <small>
+                Aqui temos as seguintes configurações: <br>
+                <strong>item A:</strong> <code>align-self: flex-start;</code><br>
+                <strong>item C:</strong> <code>align-self: flex-end;</code><br>
+                <strong>item E:</strong> <code>align-self: center;</code><br>
+                <strong>item F:</strong> <code>align-self: stretch;</code><br>
+                Os demais items estão como <code>align-self: auto;</code> portanto herdam o comportamento do <code>align-items</code> do container pai <small>(que por padrão é <code>stretch</code>, mas no nosso exemplo está como <code>auto</code>)</small>.
+            </small>
+        </section>
+    </main>
+</body>
+</html>

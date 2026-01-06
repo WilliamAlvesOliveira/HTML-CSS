@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Propriedade Order</title>
+    <style>
+        html{
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        code{
+            color: red;
+        }
+
+        h1{
+            text-align: center;
+        }
+
+        main{
+            max-width: 800px;
+            margin: auto;
+        }
+
+
+        .container{
+            display: flex;
+
+            width: 300px;
+            background-color: lightgray;
+        }
+
+        .items{
+            width: 48px;
+            background-color: skyblue;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <h1 style="text-align: center;">
+            Propriedade: <code>order</code>
+        </h1>
+
+        <p>
+            A propriedade <code>order</code> é utilizada nos elementos filhos de um container flex para definir sua posição na ordem de exibição. 
+            Por padrão, todos os elementos possuem <code>order</code> igual a 0, o que significa que serão renderizados na mesma sequência em que aparecem no código HTML. 
+            Ao atribuir valores diferentes à propriedade, é possível reorganizar os itens sem alterar a estrutura do documento.
+        </p>
+
+        <section>
+            <section class="container">
+                <div class="items">A</div>
+                <div class="items">B</div>
+                <div class="items" style="align-self: flex-end;">C</div>
+                <div class="items">D</div>
+                <div class="items">E</div>
+                <div class="items">F</div>
+            </section>
+            <small>como todos os elementos possuem o mesmo nível de order eles aparecem na ordem</small>
+        </section>
+
+        <br>
+        
+        <section>
+            <section class="container">
+                <div class="items" style="order: 7;">A</div>
+                <div class="items" style="order: 0;">B</div>
+                <div class="items" style="order: -3;">C</div>
+                <div class="items" style="order: 2;">D</div>
+                <div class="items" style="order: 0;">E</div>
+                <div class="items" style="order: 1;">F</div>
+            </section>
+            <small>
+                Aqui alteramos o elemento '<strong>A</strong>' com <code>order: 7;</code><br>
+                O elemento '<strong>C</strong>' com <code>order: -3;</code><br>
+                O elemento '<strong>D</strong>' com <code>order: 2;</code><br>
+                E o elemento '<strong>F</strong>' com <code>order: 1;</code><br>
+            </small>
+            <p>Assim os elementos são renderizados seguindo uma ordem crescente, os que tem os menores valores aparecem primeiro. (nosso caso: C:-3, B:0, E:0, F:1, D:2 e A:7)</p>
+        </section>
+     
+    </main>
+    
+</body>
+</html>
