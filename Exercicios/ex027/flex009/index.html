@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flex Shrink/Grow</title>
+    <style>
+        html{
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        code{
+            color: red;
+        }
+        
+        main{
+            max-width: 800px;
+            margin: auto;
+        }
+
+        main p{
+            text-indent: 20px;
+        }
+
+        h1,h2{
+            text-align: center;
+        }
+
+        .container{
+            display: flex;
+
+            background-color: lightgray;
+            padding: 15px 0;
+            animation: changeWidth 5s infinite alternate;
+        }
+
+        .items{
+            flex-basis:50px;
+
+            background-color: skyblue;
+            border: 1px solid black;
+        }
+
+        .base100{
+            flex-basis: 100px;
+        }
+
+        .base150{
+            flex-basis: 150px;
+        }
+
+        .no-shrink{
+            flex-shrink: 0;
+        }
+
+        .shrink2{
+            flex-shrink: 2;
+        }
+
+        .shrink3{
+            flex-shrink: 3;
+        }
+        
+        
+        .grow-item{
+            flex-grow: 1;
+        }
+        
+        .grow-item0{
+            flex-grow: 0;
+        }
+
+        .grow-item2{
+            flex-grow: 2;
+        }
+
+        .grow-item3{
+            flex-grow: 3;
+        }
+
+
+
+        @keyframes changeWidth {
+            from{
+                width: 800px
+            }
+            to{
+                width:100px
+            }
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <h1>Flex <code>shrink</code>/<code>grow</code></h1>
+
+        <p>
+            No modelo de layout flexível (Flexbox), as propriedades <code>flex-grow</code> e <code>flex-shrink</code> controlam como os itens se expandem ou encolhem dentro do contêiner. Por padrão, <code>flex-grow</code> possui valor <strong>0</strong>, o que significa que os itens não irão crescer além do tamanho definido, mesmo que haja espaço disponível. Já o <code>flex-shrink</code> possui valor <strong>1</strong>, permitindo que os itens encolham proporcionalmente quando o espaço no contêiner for insuficiente. Assim, ao utilizar o modelo padrão, os elementos mantêm suas dimensões iniciais, encolhendo apenas quando necessário, mas nunca crescendo automaticamente para ocupar espaço extra.
+        </p>
+
+        <section class="container">
+            <div class="items">item</div>
+            <div class="items">item</div>
+            <div class="items">item</div>
+            <div class="items">item</div>
+            <div class="items">item</div>
+            <div class="items">item</div>
+        </section>
+        <small>
+            Notem que, pelo comportamento padrão, mesmo com a aplicação de <code>flex-basis: 50px;</code>, 
+            os itens podem encolher até o tamanho mínimo necessário para acomodar o conteúdo. 
+            Se o contêiner for reduzido além desse limite, o layout pode se quebrar.
+        </small>
+
+        
+        <h2><code>flex-shrink</code></h2>
+
+        <p>
+            A propriedade <code>flex-shrink</code> define a capacidade de um item flexível encolher quando o espaço disponível no contêiner é insuficiente. O valor padrão é <strong>1</strong>, o que significa que os itens irão reduzir proporcionalmente seu tamanho para se ajustar ao espaço. Se configurarmos <code>flex-shrink: 0;</code>, o item não encolherá, mantendo o tamanho definido pelo <code>flex-basis</code> ou pelas dimensões iniciais, mesmo que isso cause quebra no layout.
+        </p>
+
+        <p>agora vamos configurar nossos items com a propriedade <code>flex-shrink: 0;</code></p>
+
+        <section class="container">
+            <div class="items no-shrink">item</div>
+            <div class="items no-shrink">item</div>
+            <div class="items no-shrink">item</div>
+            <div class="items no-shrink">item</div>
+            <div class="items no-shrink">item</div>
+            <div class="items no-shrink">item</div>
+        </section>
+        <small>
+            Neste exemplo, configuramos a propriedade <code>flex-shrink: 0;</code>. 
+            Com isso, os itens não encolhem, mantendo o tamanho definido pelo <code>flex-basis</code> 
+            mesmo quando o espaço do contêiner é reduzido.
+        </small>
+
+        <h2><code>flex-grow</code></h2>
+
+        
+        <p>
+            Já a propriedade <code>flex-grow</code> controla a capacidade de um item flexível crescer para ocupar o espaço extra disponível no contêiner. O valor padrão é <strong>0</strong>, indicando que os itens não irão aumentar além do tamanho definido. Ao atribuir valores maiores, como <code>flex-grow: 1;</code>, o item passa a expandir proporcionalmente em relação aos demais, preenchendo o espaço livre e tornando o layout mais adaptável.
+        </p>
+
+        <p>Vamos configurar a propriedade <code>flex-grow: 1;</code> para permitir que o item cresça</p>
+
+        <section class="container">
+            <div class="items grow-item">item</div>
+            <div class="items grow-item">item</div>
+            <div class="items grow-item">item</div>
+            <div class="items grow-item">item</div>
+            <div class="items grow-item">item</div>
+            <div class="items grow-item">item</div>
+        </section>
+        <small>neste exemplo os items crescem e encolhem até o limite co conteúdo do item, já que ambas as propriedades <code>flex-shrink</code> e <code>flex-grow</code> tem o valor 1</small>
+
+        <h2>Usando valores variados</h2>
+
+        <p>
+            Podemos variar os valores das propriedades para definir não apenas se os itens podem ou não diminuir ou crescer, mas também de que forma eles irão se comportar nesse processo.
+        </p>
+
+        <p>
+            Ao utilizarmos valores variados na propriedade <code>flex-shrink</code>, definimos diferentes proporções de encolhimento entre os itens dentro de um contêiner flex. Isso significa que, quando o espaço disponível é reduzido, os elementos com valores maiores irão encolher mais rapidamente em relação aos que possuem valores menores. Por exemplo, um item com <code>flex-shrink: 2;</code> diminuirá o dobro em comparação a outro com <code>flex-shrink: 1;</code>, permitindo controlar de forma precisa como cada elemento se adapta em cenários de falta de espaço.
+        </p>
+
+
+        <small>items com <code>flex-basis:150px;</code></small>
+        <section class="container">
+            <div class="items base150 no-shrink"><code>shrink:0</code></div>
+            <div class="items base150"><code>shrink:1</code></div>
+            <div class="items base150 shrink2"><code>shrink:2</code></div>
+            <div class="items base150 shrink3"><code>shrink:3</code></div>
+        </section>
+        <small>Notem que até o limite do conteúdo o item que possui <code>flex-shrink: 2;</code> diminuirá o dobro do que tem o <code>flex-shrink: 1;</code></small>
+
+        <p>
+            O mesmo princípio se aplica à propriedade <code>flex-grow</code>, que define a proporção de crescimento dos itens dentro de um contêiner flex quando há espaço extra disponível. Ao atribuir valores variados, controlamos quanto cada elemento irá expandir em relação aos demais. Por exemplo, um item com <code>flex-grow: 2;</code> crescerá o dobro em comparação a outro com <code>flex-grow: 1;</code>, ocupando uma parte maior do espaço livre. Dessa forma, conseguimos distribuir dinamicamente o espaço excedente e tornar o layout mais equilibrado e adaptável.
+        </p>
+
+        <small>item com <code>flex-basis: 50px;</code></small>
+        <section class="container">
+            <div class="items grow-item0"><code>grow:0</code></div>
+            <div class="items grow-item"><code>grow:1</code></div>
+            <div class="items grow-item2"><code>grow:2</code></div>
+            <div class="items grow-item3"><code>grow:3</code></div>
+        </section>
+        <small>
+            Neste exemplo, os itens com valores mais altos de <code>flex-grow</code> expandem proporcionalmente mais do que o item configurado com <code>flex-grow: 1;</code>, ocupando uma parte maior do espaço disponível no contêiner.
+        </small>
+
+        <p>Podemos misturar as propriedades da maneira que preferirmos</p>
+        <small>item com <code>flex-basis: 50px</code></small>
+         <section class="container">
+             <div class="items base100 shrink2"><code>shrink2</code></div>
+             <div class="items base100 shrink1"><code>shrink1</code></div>
+             <div class="items base100 no-shrink"><code>shrink:0</code></div>
+             <div class="items base100 grow-item"><code>grow:1</code></div>
+             <div class="items base100 grow-item2"><code>grow:2</code></div>
+             <div class="items base100 grow-item3"><code>grow:3</code></div>
+        </section>
+
+    </main>
+</body>
+</html>
