@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu com flex-box</title>
+    <style>
+        header{
+            display: flex;
+            flex-flow: row wrap;
+            justify-content:  space-between;
+            align-items: center;
+        }
+
+        nav{
+            flex-basis: 500px;
+        }
+
+        #headerMenu{
+            display: flex;
+            justify-content: space-between;
+            gap: 3px;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            
+            background-color: blue;
+        }
+
+        #headerMenu li{
+            flex: auto;
+
+        }
+
+        #headerMenu li button{
+            width: 100%;
+            text-align: center;
+        }
+
+        h1{
+            flex: 0 0 200px;
+        }
+
+    </style>
+</head>
+<body>
+    <header>    
+        <h1>Logo</h1>
+        <nav>
+            <ul id="headerMenu">
+                <li><button>option</button></li>
+                <li><button>option</button></li>
+                <li><button>option</button></li>
+                <li><button>option</button></li>
+                <li><button>option</button></li>
+                <li><button>option</button></li>
+            </ul>
+        </nav>
+    </header>
+</body>
+</html>
