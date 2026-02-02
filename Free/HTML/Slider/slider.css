@@ -1,0 +1,177 @@
+/* =========================================
+   SLIDER CONTAINER (área que rola)
+   ========================================= */
+.slider-demo {
+    overflow-x: auto;
+    /* Ativa rolagem horizontal */
+    scroll-snap-type: x mandatory;
+    /* Obriga o scroll a parar nos slides */
+    scroll-behavior: smooth;
+    /* Anima a rolagem ao clicar nos links */
+    padding: 1rem 0;
+    /* Espaço vertical para o slider respirar */
+}
+
+/* =========================================
+   TRILHO DOS SLIDES
+   ========================================= */
+.slider-track {
+    display: flex;
+    /* Coloca os slides em linha */
+    gap: 1rem;
+    /* Espaço entre slides */
+    padding-inline: 1rem;
+    /* Respiro nas laterais */
+}
+
+
+/* =========================================
+   CADA SLIDE
+   ========================================= */
+.slide {
+    flex: 0 0 auto;
+    /* Impede o flex de esticar ou quebrar o slide */
+
+    width: clamp(220px, 80vw, 420px);
+    aspect-ratio: 16 / 9;
+
+    background: #222;
+    color: white;
+    font-size: 3rem;
+
+    display: grid;
+    place-items: center;
+
+    scroll-snap-align: center;/* Cada slide vira um ponto de encaixe */
+    /* o valor center deixa este ponto a partir do centro do container */
+    
+    border-radius: 12px;
+}
+
+
+/* =========================================
+   SISTEMA DE BOLINHAS
+   ========================================= */
+.dot-slider{
+    scroll-snap-type: x mandatory; /* ativa a rolagem com encaixe a partir dos pontos de encaixe */
+    scroll-marker-group: after; scroll-marker-group: after; /* Define um grupo de marcadores de scroll que será exibido depois do conteúdo, permitindo criar indicadores (bolinhas) para cada slide */
+    
+    display: flex;
+    gap: 1em;
+
+    width: 100%;
+    overflow-x: auto;
+
+    scroll-behavior: smooth;
+}
+
+/* Container dos marcadores */
+.dot-slider::scroll-marker-group{
+    display: flex;
+    justify-content: center;
+    gap: 0.5em;
+}
+
+/* conteúdo dos marcadores */
+.slide::scroll-marker{
+    content: '';
+    height: 10px;
+    width: 10px;
+    margin: 5px 0;
+    background-color: black;
+    border-radius: 50%;
+}
+
+/* conteúdo do marcador marcado como o target (ativo) */
+.slide::scroll-marker:target-current{
+    background-color: gray;
+}
+
+#dotSlider .dot-slider::-webkit-scrollbar{
+    display: none;
+}
+
+
+/* ================================
+   SETAS
+================================ */
+.arrow-slider{
+    display: flex; /* alinha o container horizontalmente*/
+    gap: 1em; /* separa os itens do container */
+
+    width: 100%; /* limita o tamanho do container */
+    overflow-x: auto; /* adiciona rolagem no eixo x */
+
+    scroll-behavior: smooth; /* suaviza o scroll */
+
+    anchor-name: --ArrowSlider; /* Define este elemento como uma âncora nomeada para posicionamento */
+
+    scroll-snap-type: x mandatory; /* Ativa pontos de encaixe obrigatórios no eixo horizontal */
+
+}
+
+.arrow-slider::-webkit-scrollbar{
+    display: none; /* renive a barra de scroll para interagirmos a partir das setas */
+}
+
+/* scroll-button são os botões padrões da barra de rolagem */
+.arrow-slider::scroll-button(right), .arrow-slider::scroll-button(left){
+    content: 'next';
+    font-size: 12px;
+    cursor: pointer;
+
+    background-color: black;
+    height: 100%;
+
+    color: white;
+
+    position: fixed; /* fixa o botão na viewport, alinhado à âncora definida */
+    position-anchor: --ArrowSlider; /* vincula este elemento à âncora --ArrowSlider, usando sua geometria como referência de posicionamento */
+
+    position-area: right center; /* posiciona o elemento no lado direito da âncora, centralizado verticalmente */
+
+
+    margin: 0 5px;
+
+    border: 1px solid white;
+    border-radius: 0 15px 15px 0;
+
+    transition: opacity 0.2s ease;
+}
+
+.arrow-slider::scroll-button(right):disabled, .arrow-slider::scroll-button(left):disabled{
+    opacity: 30%;
+    cursor: none;
+}
+
+.arrow-slider::scroll-button(left){
+    content: 'back';
+    position-area: left center; /* posiciona o elemento no lado esquerdo da âncora, centralizado verticalmente */
+
+    border-radius: 15px 0 0 15px ;
+}
+
+@media screen and (orientation: portrait) and (max-width: 600px){
+    .slide{
+        flex: 0 0 100%;
+        border-radius: 15px;
+    }
+
+    .arrow-slider::scroll-button(right), .arrow-slider::scroll-button(left){
+        background-color: transparent;
+        border: none;
+        content: '>';
+        padding: 10px;
+        margin: 0;
+    }
+
+    .arrow-slider::scroll-button(left){
+        content: '<'
+    }
+}
+/* ================================
+   SNAP POR PÁGINA
+================================ */
+.slider-page .slide {
+    width: 100vw;
+}
