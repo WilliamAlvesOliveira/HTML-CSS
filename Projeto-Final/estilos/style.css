@@ -1,9 +1,63 @@
 /* 
   Variáveis para cores:
-  --fundo-principal
-  --texto
-  --texto-inverso
-  --destaque
-  --destaque-inverso
-  --fundo-card
-*/
+  */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --fundo-principal: #f5f5f5;
+  --texto: #222222;
+  --texto-inverso: #ffffff;
+  --destaque: #0077ff;
+  --destaque-inverso: #66bbff;
+  --fundo-card: #ffffff;
+}
+
+body {
+  background-color: var(--fundo-principal);
+
+  color: var(--texto);
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  line-height: 1.4em;
+}
+
+header {
+  display: flex;
+  gap: 3px;
+  justify-content: flex-end;
+  align-content: center;
+
+  background-color: var(--destaque);
+  padding: 10px;
+
+  color: var(--texto);
+}
+
+#menu ul {
+  display: flex;
+  gap: 3px;
+
+  list-style: none;
+}
+
+#menu a{
+  padding: 10px 15px;
+  border-radius: 5px;
+
+  color: var(--texto-inverso);
+  font-weight: 600;
+  text-decoration: none;
+
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+#menu a:hover{
+  background-color: var(--destaque-inverso);
+
+  color: var(--destaque);
+
+  
+}
