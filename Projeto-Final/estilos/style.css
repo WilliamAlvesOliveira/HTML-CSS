@@ -18,13 +18,17 @@
 
 body {
   background-color: var(--fundo-principal);
-
+  
   color: var(--texto);
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   line-height: 1.4em;
 }
 
 header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  
   display: flex;
   gap: 3px;
   justify-content: flex-end;
@@ -132,12 +136,13 @@ main{
 
 #detalhes h2{
   color: var(--destaque);
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 
 #video .video-container{
   position: relative;
   width: 100%;
+  max-width: 800px;
   margin: auto;
   aspect-ratio: 16/9;
 
@@ -192,10 +197,98 @@ main{
   border-radius: 4px;
 }
 
+.formacao-container{
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 20px
+}
 
+.formacao-container .curso{
+  background-color: var(--fundo-principal);
+  padding-left: 15px;
+  border-radius: 8px;
+  border-left: 5px solid var(--destaque-inverso);
+  transition: border 0.3s ease-in-out;
+  cursor: pointer;
+}
 
+.formacao-container .curso:hover{
+  border-left: 15px solid var(--destaque);
+}
+
+.formacao-container .periodo{
+  font-size: 0.8em;
+  font-weight: bold;
+  color: var(--texto);
+}
+
+.formacao-container .instituicao{
+  color: var(--destaque-inverso);
+  font-size: 1.2em;
+}
+
+.projetos-container{
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 20px;
+}
+
+.projetos-container .projeto{
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+
+  background-color: var(--fundo-principal);
+  padding: 10px;
+
+  border-radius: 8px;
+  border-left: 5px solid var(--destaque-inverso);
+
+  transition: border 0.3s ease-in-out;
+}
+
+.projetos-container .projeto:hover{
+  border-left: 15px solid var(--destaque);
+}
+
+.projetos-container img{
+  width: 100%;
+  aspect-ratio: 16/9;
+
+  object-fit: cover;
+  overflow: hidden;
+
+  border-radius: 8px;
+}
+
+footer{
+  background-color: var(--destaque);
+  padding: 5px;
+
+  color: var(--texto-inverso);
+  text-align: center;
+}
+
+footer a{
+  font-weight: bold;
+  color: var(--texto-inverso);
+}
 @media screen and (min-width: 768px){
   .skill-container{
     grid-template-columns: 1fr 1fr;
+  }
+
+  .projetos-container .projeto{
+    flex-direction: row-reverse;
+    justify-content: center;
+  }
+
+  .projetos-container .project-info{
+    width: 70%;
+  }
+
+  .projetos-container img{
+    align-self: flex-start;
+    width: 30%;
   }
 }

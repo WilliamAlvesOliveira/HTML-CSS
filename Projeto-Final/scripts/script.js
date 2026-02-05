@@ -1,4 +1,4 @@
-const botao = document.getElementById('botao-tema');
+const botao = document.getElementById('botaoTema');
 const body = document.body;
 
 // Persistência do tema
