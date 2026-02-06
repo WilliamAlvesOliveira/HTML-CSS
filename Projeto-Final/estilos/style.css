@@ -24,6 +24,15 @@ body {
   line-height: 1.4em;
 }
 
+body.escuro{
+  --fundo-principal: #222222;
+  --texto: #e0e0e0;
+  --texto-inverso: #333333;
+  --destaque: #cc5522;
+  --destaque-inverso: #a73919;
+  --fundo-card: #444444;
+}
+
 header {
   position: sticky;
   top: 0;
