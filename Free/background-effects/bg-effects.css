@@ -1,0 +1,179 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+main{
+    margin: auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    max-width: 1000px;
+    border: 1px solid black;
+    text-align: center;
+    text-wrap: balance;   
+}
+
+#borderContainer{
+    display: flex;
+    margin: auto;
+    width: 800px;
+    padding: 4px;
+    border-radius: 6px;
+
+    background: linear-gradient(90deg, orange, blue, orange, blue);
+    background-size: 300% 300%;
+    animation: borderMove 10s linear infinite;
+}
+
+.animatedBorder{ 
+    opacity: 1; 
+    background-color: white;
+    border-radius: 4px;
+    margin: 0;
+    width: 100%;
+}
+
+.animatedBtn{
+    display: block;
+    margin: 30px auto 30px auto;
+    padding: 20px;
+    background-image: linear-gradient(to bottom right, rgb(234, 127, 145), rgb(221, 78, 102), rgb(234, 127, 145));
+    background-size: 300% 300%;
+    color: rgb(58, 4, 13);
+    font-size: 1.4em;
+    border-radius: 5px;
+    animation: bgmove 10s linear infinite;
+}
+
+.invisibleBorderContainer{
+    margin: auto;
+    width: 500px;
+    aspect-ratio: 16/9;
+    background: linear-gradient(
+    to bottom right,
+    #f2f2f2 0%,   /* canto superior esquerdo iluminado */
+    #d9d9d9 25%, /* cinza claro */
+    #bfbfbf 50%, /* cinza médio */
+    #a6a6a6 75%, /* sombra */
+    #808080 100% /* canto inferior direito mais escuro */
+    );
+
+    background-position: center center;
+    background-size: 300%;
+    padding: 3px;
+    border-radius: 20px;
+    box-shadow: 5px 5px 10px #0000005a;
+}
+
+.invisibleBorderContaint{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: inherit;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    text-align: center;
+    color: silver;
+}
+
+.cardsContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.cards{
+    display:flex;
+    flex-direction:column;
+    justify-content:space-evenly;
+    width:150px;
+    height:200px;
+    color: rgb(1, 1, 46);
+   
+
+    border:3px solid rgb(1,1,82);
+    border-radius:5px;
+
+    padding:3px;
+
+    background-image: radial-gradient(rgb(142,204,248), rgb(96,183,246));
+
+    mask:
+      linear-gradient(
+        90deg,
+        #000000f9,
+        rgba(0,0,0,0.7),
+        rgba(0,0,0,1) 30%,
+        rgba(0,0,0,0.7),
+        #000000f9
+      ),
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+
+    mask-size:200% 100%, auto, auto;
+
+    mask-position:100% 0, 0 0, 0 0;
+
+    mask-composite: exclude;
+
+    animation:sweep 5s ease-in-out infinite;
+}
+
+.borderImage{
+    width: 300px;
+    border: 5px solid black;
+    border-radius: 1000px;
+    border-image: linear-gradient(to bottom right, yellow, purple) 1;
+}
+
+.clipPathContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 500px;
+    height: 300px;
+    background-color: blue;
+    border: 3px solid black;
+
+    clip-path: polygon(0% 0%, 100% 0%, 100% 90%, 75% 90%,58% 100%, 60% 90%, 0 90%);
+
+}
+
+@keyframes borderMove{
+    0%{
+        background-position: 100% 50%;
+    }
+    100%{
+        background-position: 0% 50%;
+    }
+}
+
+@keyframes bgmove{
+    0%{
+        background-position: 0% 0%;
+    }
+    50%{
+        background-position: 100% 100%;
+    }
+    100%{
+        background-position: 0% 0%;
+    }
+}
+
+@keyframes sweep{
+    from{
+        mask-position:-100% 0,0 0,0 0;
+    }
+    to{
+        mask-position:100% 0,0 0,0 0;
+    }
+}
+

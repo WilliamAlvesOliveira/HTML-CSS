@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>::before / ::after</title>
+    <link rel="stylesheet" href="beforeAfter.css">
+</head>
+<body>
+    <main>
+        <h2>Pseudo-elemento</h2>
+        <h1><code>::BEFORE / ::AFTER</code></h1>
+        <p>Os pseudo-elementos <code>::before</code> e <code>::after</code> em CSS são usados para inserir conteúdo gerado dinamicamente antes ou depois do conteúdo real de um elemento, sem a necessidade de alterar o HTML. Eles são muito úteis para adicionar ícones, símbolos, ornamentos visuais ou até mesmo textos auxiliares, mantendo o código mais limpo e sem poluir a marcação. Por exemplo, podem ser aplicados para criar efeitos decorativos em botões, adicionar aspas estilizadas em citações ou inserir elementos gráficos em listas. A aplicabilidade é ampla, já que permitem enriquecer a interface e melhorar a experiência do usuário com recursos visuais e funcionais, tudo apenas via CSS.
+        </p>
+        <section>
+            <p>Exemplo de uso do <code>::after</code></p>
+            <p class="afterEl"><strong>(Exemplo de conteúdo)</strong></p>
+            <p>Neste exemplo temos o primeiro conteúdo escrito entre parenteses escrito normalmente na nossa tag <strong>p</strong>, já o segundo conteúdo foi adicionado dinâmicamente através da propriedade <code>content:</code>, no Pseudo-elemento <code>::after</code></p>
+            <p>O mesmo pode ser feito com o <code>::before</code></p>
+            <p class="beforeEl"><strong>(conteúdo no html)</strong></p>
+        </section>
+        <h2>Truques com <code>::after</code> e <code>::before para</code></h2>
+        <section>
+            <h3>Bordas</h3>
+            <div id="borderContainer">
+                <p class="animatedBorder">Podemos criar bordas com gradientes ou animações usando um truque com os pseudo elementos <code>::before</code> ou <code>::after</code></p>
+            </div>
+        </section>
+
+        <button class="animatedBtn"> animated background button</button>
+
+        <div class="invisibleBorderContainer">
+            <div class="invisibleBorderContaint">Silver Border</div>
+        </div>
+    </main>
+
+</body>
+</html>
