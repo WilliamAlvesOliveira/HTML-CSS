@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gradientes</title>
+    <style>
+        *{
+            margin:  0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+
+            margin: 20px 0px;
+        }
+
+        section{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+            text-align: center;
+            text-wrap: balance;
+        }
+
+        .gradientTest{
+            width: 300px;
+            aspect-ratio: 1/1;
+            background-image: radial-gradient(hsl(240, 84%, 50%), hsl(240, 84%, 34%),  hsl(240, 84%, 20%)100%);
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <div class="gradientTest"></div>
+        <p>controlar a profundidade de uma cor em um gradiente usando apenas o grau de iluminação</p>
+    </section>
+</body>
+</html>
