@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bg Change Color</title>
+    <style>
+        body {
+    background-color: hsl(240, 100%, 60%);
+    animation: changeColor  linear;
+    animation-timeline: scroll();
+}
+
+.content {
+    width: 800px;
+    height: 3000px;
+}
+
+@keyframes changeColor {
+    25%{
+        background-color: 
+                hsl(34, 100%, 40%);
+    }
+    50%{
+        background-color: hsl(240, 100%, 60%);
+    }
+    75%{
+        background-color: 
+                hsl(34, 100%, 40%);
+    }
+    100%{
+        background-color: hsl(240, 100%, 60%);
+    }
+}
+
+    </style>
+</head>
+<body>
+    <div class="content"></div>
+    <div class="content"></div>
+    <div class="content"></div>
+</body>
+</html>

@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scroll Animations</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html{
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            min-height: 100dvh;
+            text-align: center;
+            text-wrap: balance;
+            background-image: linear-gradient(to bottom right, 
+            hsl(0, 0%, 70%), hsl(0, 0%, 65%), hsl(0, 0%, 60%),hsl(0, 0%, 40%));
+        }
+
+        .flex{
+            display: flex;
+        }
+
+        .flexColumn{
+            display: flex;
+            flex-direction: column; 
+        }
+
+        .centralized{
+            justify-content: center;
+            align-items: center;
+        }
+
+        main{
+            margin: 30px;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+        }
+
+        h1{
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 2.5em;
+
+            margin-bottom: 20px;
+        }
+
+        section{
+            margin: 30px 0px;
+        }
+
+        p{
+            margin: auto;
+            max-width: 800px;
+        }
+        
+        .container{
+            align-items: center;
+            gap: 10px;
+
+            background-image: linear-gradient( to bottom right,
+                hsl(240, 100%, 60%) 50%,
+                hsl(240, 100%, 40%));
+            width: 500px;
+            height: 250px;
+            padding: 10px;
+            padding-bottom: 50px;
+            overflow-y: scroll;
+
+            border: 3px solid hsl(0, 0%, 40%);
+            box-shadow: inset 3px 3px 10px hsla(0, 0%, 15%, 0.5);
+        }
+        
+        .card{
+            flex-shrink: 0;
+
+            background-image: linear-gradient(to bottom right,
+                hsl(34, 100%, 70%), hsl(34, 100%, 40%));
+
+            width: 100px;
+            height: 150px;
+            border: 1px solid hsl(34, 100%, 20%);
+            border-radius: 5px;
+            box-shadow: 3px 3px 10px hsl(34, 100%, 20%, 0.5);
+        }
+
+        /* =========================
+        EFEITO DE SCROLL (CSS ONLY)
+        ========================= */
+
+        .viewEnterAnimation {
+            /* Estado inicial (antes de aparecer na tela)
+            Aqui definimos como o elemento começa */
+            opacity: 0;
+            filter: brightness(0);
+            transform: translateY(100%) translateX(100%);
+
+            /* Definimos QUAL animação será usada */
+            animation: aparecer linear forwards;
+
+            animation-timeline: view();
+            /* -----------------------------
+            ANIMATION-TIMELINE
+            -----------------------------
+            Define QUEM controla o progresso da animação.
+
+            Normalmente: tempo (segundos)
+            Aqui: scroll / visibilidade do elemento
+
+            view() = usa a entrada do elemento na viewport
+
+            Eixo:
+            - block  → vertical (cima ↓ baixo) ✅ padrão
+            - inline → horizontal (esquerda → direita)
+
+            Parâmetros (30% 10%):
+            Criam uma "zona de observação" (inset)
+
+            → 30% = antecipa o início da detecção
+            → 10% = ajusta o final da área observada
+
+            Ou seja:
+            a animação começa antes do elemento
+            estar totalmente visível
+            */
+
+            /* -----------------------------
+            ANIMATION-RANGE
+            -----------------------------
+            Define QUANDO a animação acontece
+            dentro da timeline
+
+            Sintaxe:
+            entry → quando começa a entrar
+            cover → quando está visível
+
+            0% → 50% significa:
+
+            - começa exatamente quando o elemento entra
+            - termina quando 50% dele está visível
+
+            */
+            animation-range: entry 0% cover 50%;
+        }
+
+        .scroll-x{
+            margin: auto;
+            padding:0 120px 0 15px;
+            justify-content: left;
+            align-items: center;
+            gap: 20px;
+
+            background-image: linear-gradient( to bottom right,
+                hsl(240, 100%, 60%) 50%,
+                hsl(240, 100%, 40%));
+            
+            width: 800px;
+            height: 250px;
+            overflow-x: scroll;
+
+            border: 3px solid hsl(0, 0%, 40%);
+            box-shadow: inset 3px 3px 10px hsla(0, 0%, 15%, 0.5);
+        }
+
+        .scroll-xAnimation{
+            opacity: 0;
+            filter: brightness(0);
+            transform: translateY(-130%) translateX(100px);
+            animation: aparecerDeCima linear forwards;
+            animation-timeline: view(inline);
+            animation-range: entry 0% cover 20%;
+        }
+
+        .srollAnimationContainer{
+            background-image: linear-gradient(to bottom right,
+            hsl(0, 0%, 85%), hsl(0, 0%, 80%));
+            width: 800px;
+            height: 300px;
+            overflow-y: scroll;;
+            border: 3px solid hsl(0, 0%, 20%);
+            box-shadow: inset 3px 3px 10px hsla(0, 0%, 15%, 0.5);
+        }
+
+        .scrollAnimationContent{
+            position: relative;
+            padding: 5px;
+        }
+
+        .progressBar{
+            position: sticky;
+            top: 280px;
+            width: 0%;
+            height: 6px;
+
+            background-image: linear-gradient(to bottom right, 
+             hsl(0, 0%, 50%),hsl(0, 0%, 40%));
+            box-shadow: 3px 3px 10px hsl(0, 0%, 30%, 0.5);
+            
+            border-radius: 1000px;
+
+            animation: progress linear;
+            animation-timeline: scroll();
+        }
+
+        .scrollAnimationContent > p{
+            margin-bottom: 30px;
+        }
+
+        .slider{
+            position: relative;
+            anchor-name: --sliderContainer;
+            scroll-behavior: smooth ;
+            scroll-snap-type: x mandatory;
+         
+            scroll-marker-group: after;
+
+            justify-content: flex-start;
+            align-items: center;
+            gap: 20px;
+
+            padding:  15px 50px;
+            width: 1000px;
+            overflow: auto;
+
+            background-image: linear-gradient( to bottom right,
+                hsl(240, 100%, 60%) 50%,
+                hsl(240, 100%, 40%));
+                border-radius: 15px;
+            
+        }
+
+        .slider::scroll-marker-group{
+            position: absolute;
+            top: 0;
+            
+            position-anchor: --sliderContainer;
+            position-area: left center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5em;
+            
+        }
+
+        .imagem{
+            flex: 0 0 100%;
+
+            justify-content: center;
+            align-items: center;
+            aspect-ratio: 16/9;
+            background-image: linear-gradient(to bottom right,
+                hsl(34, 100%, 70%), hsl(34, 100%, 40%));
+            
+            scroll-snap-align: center;
+            border-radius: 5px;
+            
+            opacity: 0;
+            filter: brightness(0);
+            transform: translateY(-130%);
+            animation: aparecerDeCima linear forwards;
+            animation-timeline: view(inline);
+            animation-range: entry 0% cover 50%;
+        }
+
+        .imagem > P{
+            color: white;
+            font-size: 4em;
+            text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.411);
+        }
+
+        .imagem::scroll-marker{
+            content: attr(data-label);
+            color: white;
+            text-decoration: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 50px;
+            width: 50px;
+            margin: 5px 5px;
+            background-image: linear-gradient( to bottom right,
+                hsl(240, 100%, 60%) 50%,
+                hsl(240, 100%, 40%));
+            border-radius: 50%;
+            filter: brightness(0.85);
+            transform: scale(0.6);
+            transition: 0.3s transform ease-in-out;
+        }
+
+        .imagem::scroll-marker:target-current{
+            background-image: linear-gradient(to bottom right,
+                hsl(34, 100%, 70%), hsl(34, 100%, 40%));
+            filter: brightness(1);
+            outline: 2px solid hsl(34, 100%, 25%);
+            box-shadow: 3px 3px 5px hsl(34, 100%, 20%, 0.5);
+            transform: scale(1);
+            text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.455);
+            animation:  5s roll linear infinite;
+        }
+        
+        @keyframes aparecer {
+            to {
+                opacity: 1;
+                filter: brightness(1);
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes aparecerDeCima {
+            to {
+                opacity: 1;
+                filter: brightness(1);
+                transform: translateY(0) translateX(0);
+            }
+        }
+
+        @keyframes progress{
+            to{
+                width: 100%;
+            }
+        }
+
+        @keyframes roll{
+            from{
+                transform: rotate(0deg);
+            }
+            to{
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <main class="flexColumn">
+        <h1>Efeitos de Scroll apenas com CSS</h1>
+
+        <h2>Efeitos aplicados utilizando a view</h2>
+        <div class="container flexColumn">
+            <div class="card flex centralized viewEnterAnimation">1</div>
+            <div class="card flex centralized viewEnterAnimation">2</div>
+            <div class="card flex centralized viewEnterAnimation">3</div>
+            <div class="card flex centralized viewEnterAnimation">4</div>
+            <div class="card flex centralized viewEnterAnimation">5</div>
+        </div>
+
+        <div class="scroll-x flex centralized flex">
+            <div class="card flex centralized scroll-xAnimation">1</div>
+            <div class="card flex centralized scroll-xAnimation">2</div>
+            <div class="card flex centralized scroll-xAnimation">3</div>
+            <div class="card flex centralized scroll-xAnimation">4</div>
+            <div class="card flex centralized scroll-xAnimation">5</div>
+            <div class="card flex centralized scroll-xAnimation">6</div>
+            <div class="card flex centralized scroll-xAnimation">7</div>
+            <div class="card flex centralized scroll-xAnimation">8</div>
+            <div class="card flex centralized scroll-xAnimation">9</div>
+            <div class="card flex centralized scroll-xAnimation">10</div>
+            <div class="card flex centralized scroll-xAnimation">11</div>
+            <div class="card flex centralized scroll-xAnimation">12</div>
+            <div class="card flex centralized scroll-xAnimation">13</div>
+            <div class="card flex centralized scroll-xAnimation">14</div>
+            <div class="card flex centralized scroll-xAnimation">15</div>
+        </div>
+
+        <h2>Efeitos aplicados ao scroll</h2>
+
+        <div class="srollAnimationContainer">
+            <div class="scrollAnimationContent">
+                <div class="progressBar"></div>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Error explicabo in commodi autem hic deserunt nisi itaque deleniti, ipsum molestiae fugit nulla asperiores minus ducimus nemo, praesentium doloremque suscipit assumenda!
+                Reiciendis blanditiis nisi ad voluptatum aliquam quam mollitia porro. Hic, quia quam dolore quae eaque rerum voluptatum neque tenetur, tempora cumque tempore optio. Dicta quidem, ad ipsam eos dolores non?
+                Omnis distinctio perferendis incidunt, sequi quidem, recusandae perspiciatis, molestiae commodi labore eos reiciendis mollitia? Ipsum, voluptate quos et, aliquam quaerat, aliquid provident quod exercitationem ea laboriosam voluptatum at labore ullam.
+                Quisquam aut assumenda alias aspernatur, amet pariatur commodi dolorem doloribus quo voluptatem autem perferendis! Ipsa, aliquam eos, accusamus, veritatis ducimus dolor maiores soluta velit consequatur vitae suscipit. Maxime, minus corrupti!
+                Reprehenderit illum repellat cumque, saepe debitis eum voluptatibus? Suscipit ullam dicta necessitatibus et est maiores eum dolorum, sint officia magni error vero odio architecto quas sunt. Consequuntur alias mollitia corrupti.
+                Aliquam ratione facere eius, alias repellendus fugit tempora velit possimus libero. Vero aliquid minima sint odit quis sunt sequi perspiciatis facilis assumenda facere eum quo, voluptates pariatur. Enim, nostrum itaque.
+                Numquam sit animi cupiditate placeat accusamus impedit, harum dolor deserunt corrupti quis voluptatem voluptatibus veniam libero ab. Tempora nihil iste voluptatum, quam accusantium doloribus accusamus placeat corrupti molestias ducimus dolorum.
+                Commodi quas obcaecati exercitationem cum blanditiis adipisci tempora iusto quae voluptates unde illo ipsam porro repellat, laboriosam deleniti, accusantium earum beatae reiciendis sapiente eveniet. Vitae obcaecati quisquam iste rerum deserunt!
+                Natus quam, harum doloremque soluta accusantium voluptatum. Tempore, tenetur. Fugiat ipsum enim, saepe, optio eveniet harum vel sunt dolores vitae, natus labore deleniti. Eaque numquam dicta culpa ratione reprehenderit mollitia?
+                Sint consequuntur tenetur repudiandae explicabo! Consectetur suscipit est voluptatem quos, non porro sed vero laborum itaque atque! Consectetur laborum veniam quae reiciendis ad exercitationem, cupiditate excepturi saepe? Eius, at iste? Lorem, ipsum dolor sit amet consectetur adipisicing elit. Possimus, cumque magnam natus tenetur nulla voluptas. Consequuntur voluptatibus, eos quaerat fuga nam officiis rerum deserunt hic, dolores facilis quos quasi molestias.
+                Ullam, totam vitae soluta aspernatur praesentium quas enim illum! Aperiam error ex, eveniet blanditiis et laborum aliquam nisi veritatis eum commodi fuga repellendus excepturi expedita ab nulla similique at? Illum.
+                Odio expedita, eius tempora numquam, veniam perspiciatis aperiam eos id molestiae ex ducimus enim amet dolores repellendus, porro pariatur. Soluta a provident doloremque, vero reprehenderit beatae expedita atque voluptate neque!
+                Enim cupiditate quas perspiciatis in, illo neque nihil incidunt facilis aspernatur autem, similique exercitationem inventore aut praesentium aliquid. Ex, sequi accusamus? Error necessitatibus inventore quos consequatur, sequi voluptate totam ratione?
+                Praesentium optio neque commodi porro eligendi deleniti? Ipsam recusandae iure porro, voluptates inventore ullam. Harum, quos? Quasi sint voluptatum cumque, perspiciatis recusandae possimus quisquam suscipit, iure ea tempore, obcaecati dicta.</p>
+            </div>
+        </div>
+
+        <section>
+            <div class="flex slider">
+                <div data-label="A" class="flex imagem"><p>A</p></div>
+                <div data-label="B" class="flex imagem"><p>B</p></div>
+                <div data-label="C" class="flex imagem"><p>C</p></div>
+                <div data-label="D" class="flex imagem"><p>D</p></div>
+                <div data-label="E" class="flex imagem"><p>E</p></div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
